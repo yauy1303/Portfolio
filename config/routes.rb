@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root :to => "homes#top"
   get 'about' => 'homes#about', as: 'about'
 
-  devise_for :members
+  devise_for :members # ログイン・ログアウト・新規登録
 
   resources :members, only: [:index, :show, :edit, :update] do
     resource :relationships, only: [:create, :destroy] #フォロー機能
