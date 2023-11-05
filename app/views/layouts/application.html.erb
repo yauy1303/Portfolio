@@ -10,6 +10,28 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <header class="header">
+    <h1 class="logo">
+      <%= link_to "WanPal", root_path %>
+    </h1>
+    <nav class="nav">
+      <ul>
+        <li><%= link_to "サイトについて", about_path %></li>
+        <li><%= link_to "メンバー", members_path %></li>
+        <!--ログイン前-->
+        <% unless member_signed_in? %>
+        <li>ゲストログイン</li>
+        <li><%= link_to "ログイン", new_member_session_path %></li>
+        <li><%= link_to "新規登録", new_member_registration_path %></li>
+        <!--ログイン後-->
+        <% else %>
+        <li><%= link_to "マイページ",  member_path(current_member.id) %></li>
+        <li><%= link_to "ログアウト",  destroy_member_session_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </header>
+
   <body>
     <%= yield %>
   </body>

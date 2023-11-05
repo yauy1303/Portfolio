@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  devise_for :members
-
   root :to => "homes#top"
   get 'about' => 'homes#about', as: 'about'
 
+  devise_for :members
+
   resources :members, only: [:index, :show, :edit, :update] do
-    resource :relationships, only: [:create, :destroy]
+    resource :relationships, only: [:create, :destroy] #フォロー機能
     collection do  # resourcesで定義されるアクション以外を追加する(URIにidを挟まない場合はcollection)
       get "quit" # 退会確認画面
     end
@@ -18,9 +18,10 @@ Rails.application.routes.draw do
   end
 
   resources :articles, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
-    resources :comments, only: [:create, :destroy]
-    resource :favorites, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy] # コメント機能
+    resource :favorites, only: [:create, :destroy] # いいね機能
   end
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
