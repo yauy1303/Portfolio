@@ -8,10 +8,10 @@ class MembersController < ApplicationController
   def edit
   end
 
-  def follow
+  def following
   end
 
-  def follower
+  def followed
   end
 
   def quit
