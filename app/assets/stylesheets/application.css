@@ -61,3 +61,15 @@ body {
   color: #4b4b4b;
 }
 
+/*ユーザー詳細*/
+
+
+
+/*フッター*/
+.footer {
+  width: 100%;
+  padding: 30px 4% 10px;
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+}

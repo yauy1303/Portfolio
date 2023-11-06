@@ -1,2 +1,40 @@
-<h1>Members#show</h1>
-<p>Find me in app/views/members/show.html.erb</p>
+<div class="container">
+
+  <div class="member_status">
+    <div class="left">
+      <div class="member_image">
+        <% if @member.profile_image.attached? %>
+         <p><%= image_tag(rails_blob_path(@member.profile_image),:size => "50x50") %></p>
+        <% else %>
+         <p><%= image_tag("no_image.jpg", :size => "50x50") %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="right">
+      <div class="member_name">
+        <%= @member.name %>
+      </div>
+      <div class="member_introduction">
+        <%= @member.introduction %>
+      </div>
+    </div>
+  </div>
+
+  <div class="status_link">
+    <div class="left">
+      <div class="row">
+        <p class="follow"></p>
+        <p class="follower"></p>
+      </div>
+    </div>
+    <div class="right">
+      <div class="row">
+        <div class="profile_button">
+          <%= button_to "プロフィール編集", edit_member_path, method: :get %>
+        </div>
+        <button>フォローする</button>
+      </div>
+    </div>
+  </div>
+
+</div>
