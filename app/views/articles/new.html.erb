@@ -1,10 +1,10 @@
 
 <div class="conteiner">
-    
+
     <div class="article_heading">
       <h1>記事の投稿</h1>
     </div>
-    
+
     <div class="article_form">
     <%= form_with model: @article, url: articles_path(@article.id), method: :post do |f| %>
       <div class="title">
@@ -17,17 +17,18 @@
       </div>
       <div class="tag">
           <h4>タグ</h4>
-          <%#= %>
+          <%= f.label "タグ (,で区切ると複数タグ登録できます)" %>
+          <%= f.text_field :@article.tag_name %>
       </div>
       <div class="text">
          <%= f.text_area :text %>
       </div>
-      
+
       <%= f.submit '投稿' %>
-      
+
     <% end %>
     </div>
-    
+
 </div>
 
 
