@@ -18,9 +18,10 @@
       <div class="tag">
           <h4>タグ</h4>
           <%= f.label "タグ (,で区切ると複数タグ登録できます)" %>
-          <%= f.text_field :@article.tag_name %>
+          <%= f.text_field :tag_name %>
       </div>
       <div class="text">
+         <h4>本文</h4>
          <%= f.text_area :text %>
       </div>
 
