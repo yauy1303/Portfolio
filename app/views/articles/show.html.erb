@@ -1,2 +1,55 @@
-<h1>Articles#show</h1>
-<p>Find me in app/views/articles/show.html.erb</p>
+<div class="container">
+
+  <div class="article_show_title">
+    <%= @article.title %>
+  </div>
+
+  <div class="contributor_status">
+    <div class="row">
+      <div class="right">
+        <div class="contributor_image">
+          <%= image_tag @member.get_profile_image, :size => "50x50" %>
+        </div>
+        <ul>
+          <li class="contributor_name">
+            <%= @member.name %>
+          </li>
+          <li class="article_tag">
+            <% @tag.each do |tag| %>
+              <%= tag.tag_name %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+
+      <div class="left">
+        <ul>
+          <% if @member.id != current_member.id %>
+          <li class="follow_button">
+            aaaaaaa
+          </li>
+          <% end %>
+          <% if @member.id == current_member.id %>
+          <li class="article_edit_button">
+            <%= button_to "記事を編集する", edit_article_path,  method: :get %>
+          </li>
+          <li class="article_destroy_button">
+            <%= button_to "記事を削除する", article_path(@article.id),   method: :delete, "data-confirm" => "本当に削除しますか？" %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="article_body">
+    <div class="eyecatch">
+      <%= image_tag @article.get_article_image, :size => "500x500" %>
+    </div>
+    <div class="text">
+      <%= @article.text %>
+    </div>
+  </div>
+
+</div>

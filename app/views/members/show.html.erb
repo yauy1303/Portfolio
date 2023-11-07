@@ -3,11 +3,7 @@
   <div class="member_status">
     <div class="left">
       <div class="member_image">
-        <% if @member.profile_image.attached? %>
-         <p><%= image_tag(rails_blob_path(@member.profile_image),:size => "50x50") %></p>
-        <% else %>
-         <p><%= image_tag("no_image.jpg", :size => "50x50") %></p>
-        <% end %>
+        <p><%= image_tag @member.get_profile_image, :size => "50x50" %></p>
       </div>
     </div>
     <div class="right">
