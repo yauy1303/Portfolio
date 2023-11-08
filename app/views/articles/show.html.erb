@@ -25,17 +25,21 @@
       <div class="left">
         <ul>
           <% if @member.id != current_member.id %>
-          <li class="follow_button">
-            aaaaaaa
-          </li>
-          <% end %>
-          <% if @member.id == current_member.id %>
-          <li class="article_edit_button">
-            <%= button_to "記事を編集する", edit_article_path, method: :get %>
-          </li>
-          <li class="article_destroy_button">
-            <%= button_to "記事を削除する", article_path(@article.id),   method: :delete, "data-confirm" => "本当に削除しますか？" %>
-          </li>
+            <li class="follow_button">
+              <!--未フォロー・フォロー条件分岐-->
+              <% if current_member.following?(@member) %>
+                <%= button_to "フォロー中", member_relationships_path(@member.id), method: :delete %>
+              <% else %>
+                <%= button_to "フォロー", member_relationships_path(@member.id), method: :post %>
+              <% end %>
+            </li>
+          <% elsif %>
+            <li class="article_edit_button">
+              <%= button_to "記事を編集する", edit_article_path, method: :get %>
+            </li>
+            <li class="article_destroy_button">
+              <%= button_to "記事を削除する", article_path(@article.id),   method: :delete, "data-confirm" => "本当に削除しますか？" %>
+            </li>
           <% end %>
         </ul>
       </div>
