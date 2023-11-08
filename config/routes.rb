@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'about' => 'homes#about', as: 'about'
 
   devise_for :members,  # ログイン・ログアウト・新規登録
-  controllers: {  # ゲストユーザーの編集・削除制限
+  controllers: {        # ゲストユーザーの編集・削除制限
     registrations: "registrations"
   }
 
@@ -14,13 +14,13 @@ Rails.application.routes.draw do
 
   resources :members, only: [:index, :show, :edit, :update] do
     resource :relationships, only: [:create, :destroy] #フォロー機能
+      get "followings" => "relationships#followings", as: "followings" #フォロー一覧画面
+      get "followeds" => "relationships#followeds", as: "followeds"    #フォロワー一覧画面
     collection do   # resourcesで定義されるアクション以外を追加する(URIにidを挟まない場合はcollection)
-      get "quit"  # 退会確認画面
+      get "quit"    # 退会確認画面
     end
     member do  # resourcesで定義されるアクション以外を追加する(URIにidを挟む場合はmember)
       patch "out" => "members#out" # 退会処理
-      get "followings"  #フォロー一覧画面
-      get "followeds"  #フォロワー一覧画面
     end
   end
 

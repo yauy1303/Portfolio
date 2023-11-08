@@ -25,10 +25,20 @@
     </div>
     <div class="right">
       <div class="row">
-        <div class="profile_button">
-          <%= button_to "プロフィール編集", edit_member_path, method: :get %>
-        </div>
-        <button>フォローする</button>
+        <% if current_member == @member %>
+          <div class="profile_button">
+            <%= button_to "プロフィール編集", edit_member_path, method: :get %>
+          </div>
+          <% else current_member != @member %>
+          <div class="follow_button">
+            <% if current_member.following?(@member) %>
+              <%= button_to "フォロー中", member_relationships_path(@member.id), method: :delete %>
+            <% else %>
+              <%= button_to "フォロー", member_relationships_path(@member.id), method: :post %>
+            <% end %>
+          </div>
+        <% end %>
+
       </div>
     </div>
   </div>

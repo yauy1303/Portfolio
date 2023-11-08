@@ -33,14 +33,14 @@ class Article < ApplicationRecord
     end
   end
 
-  # Updateテスト
-  # def update_tag(tag_list)
-  #   tag_relationships.map(&:destroy)
-  #   return unless tag_list
-  #   tag_list.each do |tag|
-  #     tag = Tag.find_or_create_by(tag_name: tag)
-  #     TagRelationship.create!(tag: tag, article: self)
-  #   end
-  # end
+  # Updateの時、タグの数を減らした際の記述
+  def update_tag(tag_list)
+    tag_relationships.map(&:destroy)
+    return unless tag_list
+    tag_list.each do |tag|
+      tag = Tag.find_or_create_by(tag_name: tag)
+      TagRelationship.create!(tag: tag, article: self)
+    end
+  end
 
 end

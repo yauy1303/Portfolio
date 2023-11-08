@@ -15,6 +15,26 @@ class Member < ApplicationRecord
   # アソシエーション
   has_many :articles, dependent: :destroy
 
+  # フォロー機能
+  has_many :active_relationships, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  # フォローフォロワー一覧画面用
+  has_many :followings, through: :active_relationships, source: :followed
+  has_many :followeds, through: :passive_relationships, source: :following
+
+
+  def follow(member)
+    active_relationships.create(followed_id: member.id)
+  end
+
+  def unfollow(member)
+    active_relationships.find_by(followed_id: member.id).destroy
+  end
+
+  def following?(member)
+    followings.include?(member)
+  end
+
   # 画像投稿用（アクティブストレージ）
   has_one_attached :profile_image
   has_one_attached :cover_image

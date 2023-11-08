@@ -25,8 +25,6 @@ class ArticlesController < ApplicationController
     tag_list = params[:article][:tag_name].split(",")
     if @article.update(article_params)
        @article.save_tag(tag_list)
-      # Updateテスト
-      # @article.update_tag(tag_list)
        redirect_to article_path(@article.id), notice:"編集しました"
     else
        render :edit
