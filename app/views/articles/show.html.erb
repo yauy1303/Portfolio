@@ -62,6 +62,10 @@
         <div class="comment_destroy_button">
           <%= button_to "コメント削除", article_comment_path(comment.article, comment), method: :delete %>
         </div>
+      <% elsif current_member.admin? %>
+        <div class="admin_comment_destroy_button">
+          <%= button_to "管理者用削除", article_comment_path(comment.article, comment), method: :delete %>
+        </div>
       <% end %>
     <% end %>
   </div>
