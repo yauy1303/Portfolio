@@ -1,7 +1,12 @@
 class Article < ApplicationRecord
   # アソシエーション
+
+  # タグ機能
   has_many :tag_relationships, dependent: :destroy
   has_many :tags, through: :tag_relationships
+
+  # コメント機能
+  has_many :comments, dependent: :destroy
 
   belongs_to :member
 

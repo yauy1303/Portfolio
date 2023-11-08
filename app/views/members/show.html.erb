@@ -19,18 +19,20 @@
   <div class="status_link">
     <div class="left">
       <div class="row">
-        <p class="follow"></p>
-        <p class="follower"></p>
+        <p class="follow">フォロー: <%= @member.followings.count %></p>
+        <p class="follower">フォロワー: <%= @member.followeds.count %></p>
       </div>
     </div>
     <div class="right">
       <div class="row">
+        <!--ログインユーザー認証-->
         <% if current_member == @member %>
           <div class="profile_button">
             <%= button_to "プロフィール編集", edit_member_path, method: :get %>
           </div>
-          <% else current_member != @member %>
+          <% else %>
           <div class="follow_button">
+            <!--未フォロー・フォロー条件分岐-->
             <% if current_member.following?(@member) %>
               <%= button_to "フォロー中", member_relationships_path(@member.id), method: :delete %>
             <% else %>
@@ -38,9 +40,9 @@
             <% end %>
           </div>
         <% end %>
-
       </div>
     </div>
+
   </div>
 
 </div>

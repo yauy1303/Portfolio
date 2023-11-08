@@ -15,6 +15,9 @@ class Member < ApplicationRecord
   # アソシエーション
   has_many :articles, dependent: :destroy
 
+  # コメント機能
+  has_many :comments, dependent: :destroy
+
   # フォロー機能
   has_many :active_relationships, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
@@ -47,6 +50,5 @@ class Member < ApplicationRecord
     end
     profile_image
   end
-
 
 end

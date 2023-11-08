@@ -31,7 +31,7 @@
           <% end %>
           <% if @member.id == current_member.id %>
           <li class="article_edit_button">
-            <%= button_to "記事を編集する", edit_article_path,  method: :get %>
+            <%= button_to "記事を編集する", edit_article_path, method: :get %>
           </li>
           <li class="article_destroy_button">
             <%= button_to "記事を削除する", article_path(@article.id),   method: :delete, "data-confirm" => "本当に削除しますか？" %>
@@ -50,6 +50,27 @@
     <div class="text">
       <%= @article.text %>
     </div>
+  </div>
+
+  <div class="comment_index">
+    <% @article.comments.each do |comment| %>
+      <p><%= image_tag comment.member.get_profile_image, :size => "50x50" %></p>
+      <%= comment.member.name %>
+      <%= comment.created_at.strftime('%Y/%m/%d') %>
+      <%= comment.article_comment %>
+      <% if comment.member.id == current_member.id %>
+        <div class="comment_destroy_button">
+          <%= button_to "コメント削除", article_comment_path(comment.article, comment), method: :delete %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="comment_form">
+    <%= form_with model: [@article, @comment] do |f| %>
+      <%= f.text_area :article_comment, rows: "5", cols: "50", placeholder: "コメントをここに" %>
+      <%= f.submit "送信する" %>
+    <% end %>
   </div>
 
 </div>

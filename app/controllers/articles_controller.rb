@@ -44,6 +44,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @member = Member.find(@article.member_id)
     @tag = @article.tags
+    @comment = Comment.new
   end
 
 
