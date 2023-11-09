@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   end
 
   resources :members, only: [:index, :show, :edit, :update] do
-    resource :relationships, only: [:create, :destroy] #フォロー機能
-      get "followings" => "relationships#followings", as: "followings" #フォロー一覧画面
-      get "followeds" => "relationships#followeds", as: "followeds"    #フォロワー一覧画面
+    resource :relationships, only: [:create, :destroy]                  #フォロー機能
+      get "followings" => "relationships#followings", as: "followings"  #フォロー一覧画面
+      get "followeds" => "relationships#followeds", as: "followeds"     #フォロワー一覧画面
     collection do   # resourcesで定義されるアクション以外を追加する(URIにidを挟まない場合はcollection)
       get "quit"    # 退会確認画面
     end

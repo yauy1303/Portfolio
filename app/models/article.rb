@@ -1,4 +1,5 @@
 class Article < ApplicationRecord
+
   # アソシエーション
 
   # タグ機能
@@ -7,6 +8,9 @@ class Article < ApplicationRecord
 
   # コメント機能
   has_many :comments, dependent: :destroy
+
+  # いいね機能
+  has_many :favorites, dependent: :destroy
 
   belongs_to :member
 
@@ -46,6 +50,11 @@ class Article < ApplicationRecord
       tag = Tag.find_or_create_by(tag_name: tag)
       TagRelationship.create!(tag: tag, article: self)
     end
+  end
+
+  # いいねしているかの判断
+  def favorited_by?(member)
+    favorites.exists?(member_id: member.id)
   end
 
 end
