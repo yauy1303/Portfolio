@@ -1,4 +1,21 @@
 class ArticlesController < ApplicationController
+
+  def search
+    @q = Article.ransack(params[:q])
+    @articles = @q.result(distinct: true)
+  end
+
+  def index
+    @articles = Article.page(params[:page])
+  end
+
+  def show
+    @article = Article.find(params[:id])
+    @member = Member.find(@article.member_id)
+    @tag = @article.tags
+    @comment = Comment.new
+  end
+
   def new
     @article = Article.new
   end
@@ -35,16 +52,6 @@ class ArticlesController < ApplicationController
     article = Article.find(params[:id])
     article.destroy
     redirect_to articles_path, notice:"削除しました"
-  end
-
-  def index
-  end
-
-  def show
-    @article = Article.find(params[:id])
-    @member = Member.find(@article.member_id)
-    @tag = @article.tags
-    @comment = Comment.new
   end
 
 

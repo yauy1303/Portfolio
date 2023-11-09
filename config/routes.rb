@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root :to => "homes#top"
   get 'about' => 'homes#about', as: 'about'
 
+  # get "search" => "searches#search", as: "search" # 検索機能
+
   devise_for :members,  # ログイン・ログアウト・新規登録
   controllers: {        # ゲストユーザーの編集・削除制限
     registrations: "registrations"
@@ -27,6 +29,9 @@ Rails.application.routes.draw do
   resources :articles, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
     resources :comments, only: [:create, :destroy]  # コメント機能
     resource :favorites, only: [:create, :destroy]  # いいね機能
+    collection do
+      get "search"
+    end
   end
 
 

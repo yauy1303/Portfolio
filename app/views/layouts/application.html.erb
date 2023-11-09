@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -15,20 +14,32 @@
     <h1 class="logo">
       <%= link_to "WanPal", root_path %>
     </h1>
+
+    <div clsaa="search">
+      <div class="search_form">
+        <%= search_form_for @q, url: search_articles_path do |f| %>
+           <%= f.label :title_cont, '投稿名' %>
+          <%= f.search_field :title_cont, class:"form-control" %>
+          <%= f.submit "検索" %>
+        <% end %>
+      </div>
+    </div>
+
     <nav class="nav">
       <ul>
         <li><%= link_to "サイトについて", about_path %></li>
         <li><%= link_to "メンバー", members_path %></li>
+        <li><%= link_to "投稿一覧", articles_path %></li>
         <!--ログイン前-->
         <% unless member_signed_in? %>
-        <li><%= link_to 'ゲストログイン', members_guest_sign_in_path, method: :post %></li>
-        <li><%= link_to "ログイン", new_member_session_path %></li>
-        <li><%= link_to "新規登録", new_member_registration_path %></li>
+          <li><%= link_to 'ゲストログイン', members_guest_sign_in_path, method: :post %></li>
+          <li><%= link_to "ログイン", new_member_session_path %></li>
+          <li><%= link_to "新規登録", new_member_registration_path %></li>
         <!--ログイン後-->
         <% else %>
-        <li><%= link_to "マイページ", member_path(current_member.id) %></li>
-        <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></li>
-        <li><%= button_to "投稿する", new_article_path,  method: :get %></li>
+          <li><%= link_to "マイページ", member_path(current_member.id) %></li>
+          <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></li>
+          <li><%= button_to "投稿する", new_article_path,  method: :get %></li>
         <% end %>
       </ul>
     </nav>
