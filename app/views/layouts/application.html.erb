@@ -28,16 +28,16 @@
 
     <nav class="nav">
       <ul>
-        <li><%= link_to "サイトについて", about_path %></li>
-        <li><%= link_to "メンバー", members_path %></li>
-        <li><%= link_to "投稿一覧", articles_path %></li>
         <!--ログイン前-->
+          <li><%= link_to "サイトについて", about_path %></li>
         <% unless member_signed_in? %>
           <li><%= link_to 'ゲストログイン', members_guest_sign_in_path, method: :post %></li>
           <li><%= link_to "ログイン", new_member_session_path %></li>
           <li><%= link_to "新規登録", new_member_registration_path %></li>
         <!--ログイン後-->
         <% else %>
+          <li><%= link_to "メンバー", members_path %></li>
+          <li><%= link_to "投稿一覧", articles_path %></li>
           <li><%= link_to "マイページ", member_path(current_member.id) %></li>
           <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></li>
           <li><%= button_to "投稿する", new_article_path,  method: :get %></li>
@@ -47,11 +47,10 @@
   </header>
 
   <body>
-    <!--成功通知-->
+    <!--通知-->
     <div class="notice">
       <%= flash[:notice] %>
     </div>
-    <!--失敗通知-->
     <div class="alert">
       <%= flash[:alert] %>
     </div>

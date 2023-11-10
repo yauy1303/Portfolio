@@ -26,12 +26,11 @@ class MembersController < ApplicationController
     member = Member.find(params[:id])
     member.update(is_member: !member.is_member)
     if member.is_member
-      flash[:alert] =  "管理者により退会になりました"
+      flash[:notice] =  "管理者により退会になりました"
     else
       flash[:notice] = "有効にします"
     end
-
-    redirect_to request.referer, notice: "管理者により退会になりました"
+    redirect_to request.referer
   end
 
   # ストロングパラメータ

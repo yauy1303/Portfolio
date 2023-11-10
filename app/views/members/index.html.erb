@@ -4,7 +4,7 @@
     <% @members.each do |member| %>
     <div class="member_list">
       <% if current_member.admin  %>
-        <%#= image_tag member.get_profile_image, :size => "50x50" %>
+        <%= image_tag member.get_profile_image, :size => "50x50" %>
         <%= member.name %>
         <%= member.introduction %>
         <div class= "follow_button">
@@ -18,10 +18,12 @@
           <% end %>
         </div>
         <div class="out_button">
-          <% if member.is_member == false %>
-            <%= button_to "管理者退会", out_member_path(member), method: :patch %>
-          <% else %>
-             <%= button_to "有効にする", out_member_path(member), method: :patch %>
+          <% unless current_member.admin %>
+            <% if member.is_member == false %>
+              <%= button_to "管理者退会", out_member_path(member), method: :patch %>
+            <% else %>
+               <%= button_to "有効にする", out_member_path(member), method: :patch %>
+            <% end %>
           <% end %>
         </div>
       <% else %>

@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_member!
 
   def search
     @q = Article.ransack(params[:q])

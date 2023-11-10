@@ -1,4 +1,5 @@
 class SessionsController < Devise::SessionsController
+  before_action :reject_member, only: [:create]
 
   # ゲストログイン
   def guest_sign_in

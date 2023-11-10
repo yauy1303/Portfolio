@@ -54,4 +54,9 @@ class Member < ApplicationRecord
     profile_image
   end
 
+  # 退会メンバーのログイン制限
+  def active_for_authentication?
+    self.is_member == false
+  end
+
 end
