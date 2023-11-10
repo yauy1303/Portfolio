@@ -21,7 +21,7 @@ class Article < ApplicationRecord
   def get_article_image
     unless article_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
-      image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+      article_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     article_image
   end

@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   root :to => "homes#top"
   get 'about' => 'homes#about', as: 'about'
 
-  # get "search" => "searches#search", as: "search" # 検索機能
-
   devise_for :members,  # ログイン・ログアウト・新規登録
   controllers: {        # ゲストユーザーの編集・削除制限
     registrations: "registrations"
@@ -22,7 +20,7 @@ Rails.application.routes.draw do
       get "quit"    # 退会確認画面
     end
     member do  # resourcesで定義されるアクション以外を追加する(URIにidを挟む場合はmember)
-      patch "out" => "members#out" # 退会処理
+      patch "out" => "members#out" # 退会処理(論理削除)
     end
   end
 

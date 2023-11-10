@@ -3,6 +3,8 @@ class ArticlesController < ApplicationController
   def search
     @q = Article.ransack(params[:q])
     @articles = @q.result(distinct: true)
+    @result = params[:q]&.values&.reject(&:blank?)
+    @search_word = @q.title_cont
   end
 
   def index
