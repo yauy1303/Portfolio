@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <!--fontawesome-->
+    <script src="https://kit.fontawesome.com/e9e6566511.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -19,8 +22,10 @@
     <div clsaa="search">
       <div class="search_form">
         <%= search_form_for @q, url: search_articles_path do |f| %>
-           <%= f.label :title_cont, '投稿名' %>
-          <%= f.search_field :title_cont, class:"form-control" %>
+          <%= f.label :title_cont, class:"search_icon" do %>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          <% end %>
+          <%= f.search_field :title_cont, :placeholder => "投稿名" %>
           <%= f.submit "検索" %>
         <% end %>
       </div>
@@ -47,14 +52,19 @@
   </header>
 
   <body>
-    <!--通知-->
-    <div class="notice">
-      <%= flash[:notice] %>
+    <div class="wrapper">
+      
+      <!--通知-->
+      <div class="notice">
+        <%= flash[:notice] %>
+      </div>
+      <div class="alert">
+        <%= flash[:alert] %>
+      </div>
+    
+      <%= yield %>
+      
     </div>
-    <div class="alert">
-      <%= flash[:alert] %>
-    </div>
-    <%= yield %>
   </body>
 
   <!--フッター-->

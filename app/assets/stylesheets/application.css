@@ -20,17 +20,12 @@
    box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  /*font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
-  background-color: #e6e6e6;
-}
 
 /*ヘッダー*/
 .header {
   width: 100%;
   padding: 30px 4% 10px;
+  margin-bottom: 100px;
   background-color: #fff;
   display: flex;
   align-items: center;
@@ -62,7 +57,44 @@ body {
   color: #4b4b4b;
 }
 
-/*ユーザー詳細*/
+
+/*body*/
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.7;
+  /*font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  background-color: #e6e6e6;
+}
+
+body p {
+  font-size: 14px;
+}
+
+/*body画面幅調整*/
+.wrapper {
+  width: 1170px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/*homes/about*/
+.about .about_title {
+  text-align: center;
+}
+
+.about .row {
+  margin-top: 3%;
+  display: flex;
+  justify-content:center;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.about .about_image {
+  margin-right: 20px;
+}
+
 
 
 
