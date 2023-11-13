@@ -64,27 +64,80 @@ body {
   padding: 0;
   line-height: 1.7;
   /*font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
-  background-color: #e6e6e6;
+  /*background-color: #e6e6e6;*/
+  background-image: url(back_image.jpg);
 }
 
 body p {
   font-size: 14px;
 }
 
+
 /*body画面幅調整*/
 .wrapper {
-  width: 1170px;
+  width: 1000px;
   max-width: 100%;
   margin: 0 auto;
 }
 
+/*ボタン共通*/
+.button {
+  border:double 2px #c0c0c0;
+  border-radius: 0;
+  background: #fff;
+}
+
+.button:hover {
+  color: #000;
+  background: #FFF450;
+}
+
+
+/*members/sign_in*/
+.login {
+  background-color: #ffffcc;
+  width: 35%;
+  margin:0 auto;
+  padding: 50px;
+}
+
+.login h2 {
+  margin: 0 0 25px 0;
+}
+
+.login .email_field {
+  margin-bottom: 5px;
+}
+
+.login .password_field {
+  margin-bottom: 20px;
+}
+
+.login .login_button {
+  margin-bottom: 30px;
+}
+
+.login .signup_link {
+  text-align: right;
+}
+
+
 /*homes/about*/
+.about {
+  background-color: #ffffcc;
+  padding: 50px 0;
+}
+
 .about .about_title {
   text-align: center;
+  margin-bottom: 3%;
+}
+
+.about .about_title h1 {
+  margin: 0;
 }
 
 .about .row {
-  margin-top: 3%;
   display: flex;
   justify-content:center;
   flex-direction: row-reverse;
