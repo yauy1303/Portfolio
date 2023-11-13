@@ -1,48 +1,56 @@
 <div class="container">
+  <div class="member_show">
 
-  <div class="member_status">
-    <div class="left">
-      <div class="member_image">
-        <p><%= image_tag @member.get_profile_image, :size => "50x50" %></p>
+    <div class="member_profile">
+      <div class="left">
+        <div class="image">
+          <p><%= image_tag @member.get_profile_image, :size => "200x200" %></p>
+        </div>
+      </div>
+      <div class="right">
+        <div class="name">
+          <%= @member.name %>
+        </div>
+        <div class="member_introduction">
+          <%= @member.introduction %>
+        </div>
       </div>
     </div>
-    <div class="right">
-      <div class="member_name">
-        <%= @member.name %>
-      </div>
-      <div class="member_introduction">
-        <%= @member.introduction %>
-      </div>
-    </div>
-  </div>
 
-  <div class="status_link">
-    <div class="left">
-      <div class="row">
+    <div class="member_status">
+      <div class="follow_link">
         <p class="follow">フォロー: <%= @member.followings.count %></p>
         <p class="follower">フォロワー: <%= @member.followeds.count %></p>
       </div>
-    </div>
-    <div class="right">
-      <div class="row">
+      <div class="profile_button">
         <!--ログインユーザー認証-->
         <% if current_member == @member %>
-          <div class="profile_button">
-            <%= button_to "プロフィール編集", edit_member_path, method: :get %>
+          <div class="edit_button">
+            <%= button_to "編集", edit_member_path, method: :get, class: "button" %>
           </div>
           <% else %>
-          <div class="follow_button">
-            <!--未フォロー・フォロー条件分岐-->
-            <% if current_member.following?(@member) %>
-              <%= button_to "フォロー中", member_relationships_path(@member.id), method: :delete %>
-            <% else %>
-              <%= button_to "フォロー", member_relationships_path(@member.id), method: :post %>
-            <% end %>
+            <%= render "relationships/follow_button", locals: { member: @member } %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="article_index">
+      <div class="title">
+        <h4><%= @member.name %>さんの投稿一覧</h4>
+      </div>
+      <div class="index">
+        <% @articles.each do |article| %>
+          <p><%= image_tag article.get_article_image, :size => "150x150" %></p>
+          <p><%= article.title %></p>
+          <p>投稿者:<%= article.member.name %></p>
+          <p>日時:<%= article.created_at.strftime('%Y/%m/%d') %></p>
+          <div class="row">
+            <p>コメ<%= article.comments.count %></p>
+            <p>いいね<%= article.favorites.count %></p>
           </div>
         <% end %>
       </div>
     </div>
 
   </div>
-
 </div>

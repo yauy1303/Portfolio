@@ -7,6 +7,7 @@ class MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
+    @articles = @member.articles.all
   end
 
   def edit

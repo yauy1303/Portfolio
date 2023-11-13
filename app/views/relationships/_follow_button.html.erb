@@ -1,0 +1,8 @@
+ <div class="follow_button">
+  <!--未フォロー・フォロー条件分岐-->
+  <% if current_member.following?(@member) %>
+    <%= button_to "フォロー中", member_relationships_path(@member.id), method: :delete, class: "button" %>
+  <% else %>
+    <%= button_to "フォロー", member_relationships_path(@member.id), method: :post, class: "button" %>
+  <% end %>
+</div>
