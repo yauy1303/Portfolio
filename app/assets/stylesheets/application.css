@@ -94,6 +94,13 @@ body p {
 }
 
 
+/*ページネーション共通*/
+.paginate {
+  text-align: center;
+  margin-top: 30px;
+}
+
+
 /*ログイン画面*/
 .login {
   background-color: #ffffcc;
@@ -310,10 +317,6 @@ body p {
   margin-right: 3px;
 }
 
-.member_show .paginate {
-  text-align: center;
-  margin-top: 30px;
-}
 
 /*メンバー一覧*/
 .member_index a {
@@ -371,6 +374,35 @@ body p {
 .member_index .member_list .row .right .right_row .button_row .out_button {
   margin-right: 10px;
 }
+
+.member_index .paginate {
+  background: #ffffcc;
+  max-width: 30%;
+  margin: 30px auto 0;
+}
+
+
+/*プロフィール編集*/
+.profile_edit {
+  background-color: #ffffcc;
+  width: 55%;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+.profile_edit h2 {
+  margin-bottom: 25px;
+}
+
+.profile_edit .name_filed,.introduction_filed {
+  margin-bottom: 5px;
+}
+
+.profile_edit .image_filed {
+  margin-bottom: 20px;
+}
+
+
 
 /*フッター*/
 .footer {

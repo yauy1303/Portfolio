@@ -1,16 +1,31 @@
-<h1>Members#edit</h1>
+<div class="container">
+  <div class="profile_edit">
 
-<%= form_with model: @member, url: member_path(@member.id), method: :patch do |f| %>
+    <h2>プロフィール編集</h2>
 
-  <h4>メンバーネーム</h4>
-  <%= f.text_field :name %>
+    <%= form_with model: @member, url: member_path(@member.id), method: :patch do |f| %>
+      <div class="name_filed">
+        <%= f.label "メンバーネーム" %><br />
+        <%= f.text_field :name, size: "30" %>
+      </div>
 
-  <h4>自己紹介</h4>
-  <%= f.text_area :introduction %>
+      <div class="introduction_filed">
+        <%= f.label "自己紹介" %><br />
+        <%= f.text_area :introduction, size: "55x8" %>
+      </div>
 
-  <h4>プロフィール画像</h4>
-  <%= f.file_field :profile_image, accept: "image/*" %>
+      <div class="image_filed">
+        <%= f.label "プロフィール画像" %><br />
+        <%= f.file_field :profile_image, accept: "image/*" %>
+      </div>
 
-  <%= f.submit '保存' %>
+      <div class="save_button">
+         <%= f.submit '変更を保存', class: "button" %>
+      </div>
+    <% end %>
 
-<% end %>
+
+  </div>
+</div>
+
+
