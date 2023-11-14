@@ -190,6 +190,10 @@ body p {
   padding: 50px;
 }
 
+.member_show a {
+  text-decoration: none;
+}
+
 .member_show .member_profile {
   display: flex;
   justify-content: center;
@@ -311,6 +315,62 @@ body p {
   margin-top: 30px;
 }
 
+/*メンバー一覧*/
+.member_index a {
+  text-decoration: none;
+}
+
+.member_index .title {
+  margin-bottom: 30px;
+}
+
+.member_index .member_list {
+  background-color: #ffffcc;
+  padding: 20px 100px;
+}
+
+.member_index .member_list:hover {
+  background-color:#B3B3B3
+}
+
+.member_index .member_list .row {
+  display: flex;
+}
+
+.member_index .member_list .row .left {
+  margin-right: 30px;
+}
+
+.member_index .member_list .row .left img {
+  border-radius: 50%;
+}
+
+.member_index .member_list .row .right .right_row {
+  display: flex;
+  margin-top: 30px;
+  align-items: center;
+}
+
+.member_index .member_list .row .right .right_row .name p{
+  font-size: 25px;
+  font-weight: bold;
+  margin: 0;
+  padding-right: 50px;
+}
+
+.member_index .member_list .row .right .right_row .button_row {
+  display: flex;
+  align-items: center;
+}
+
+.member_index .member_list .row .right .right_row .button_row .button {
+  width: 150px;
+  padding: 10px;
+}
+
+.member_index .member_list .row .right .right_row .button_row .out_button {
+  margin-right: 10px;
+}
 
 /*フッター*/
 .footer {

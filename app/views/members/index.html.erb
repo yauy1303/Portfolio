@@ -1,58 +1,77 @@
 <div class="container">
 
   <div class="member_index">
+
+    <div class="title">
+      <h2>メンバー一覧</h2>
+    </div>
+
     <% @members.each do |member| %>
-    <div class="member_list">
-      <% if current_member.admin  %>
-        <div class="row">
-          <div class="left">
-            <p><%= image_tag member.get_profile_image, :size => "100x100" %></p>
-          </div>
-          <div class="right">
-            <div class="right_row">
-              <div class="name">
-                <p><%= member.name %></p>
-              </div>
-              <div class="button_row">
-                 <div class="out_button">
-                  <% unless current_member.admin %>
-                    <% if member.is_member == false %>
-                      <p><%= button_to "管理者退会", out_member_path(member), method: :patch, class:"button" %></p>
-                    <% else %>
-                       <p><%= button_to "有効にする", out_member_path(member), method: :patch, class:"button" %></p>
-                    <% end %>
-                  <% end %>
+      <%= link_to member_path(member.id) do %>
+        <div class="member_list">
+
+            <% if current_member.admin  %>
+              <div class="row">
+                <div class="left">
+                  <p><%= image_tag member.get_profile_image, :size => "150x150" %></p>
                 </div>
-                 <!--フォローボタン-->
-                 <% unless member.id == current_member.id %>
-                   <%= render "relationships/follow_button", member: member %>
-                 <% end %>
+                <div class="right">
+                  <div class="right_row">
+                    <div class="name">
+                      <p><%= member.name %></p>
+                    </div>
+                    <div class="button_row">
+                      <% if current_member.admin %>
+                        <% unless member.admin  == true %>
+                          <div class="out_button">
+                            <% if member.is_member == false %>
+                              <p><%= button_to "管理者退会", out_member_path(member), method: :patch, class:"button" %></p>
+                            <% else %>
+                              <p><%= button_to "有効にする", out_member_path(member), method: :patch, class:"button" %></p>
+                            <% end %>
+                          </div>
+                        <% end %>
+                      <% end %>
+                       <!--フォローボタン-->
+                       <% unless member.id == current_member.id %>
+                         <%= render "relationships/follow_button", member: member %>
+                       <% end %>
+                    </div>
+                  </div>
+                  <div class="introduction">
+                    <p><%= member.introduction %></p>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="introduction">
-              <p><%= member.introduction %></p>
-            </div>
-          </div>
-        </div>
 
-      <% else %>
-        <% unless member.is_member == true %>
-        　<div class="row">
-        　  <div class="right_row">
-
-        　  </div>
+            <% else %>
+              <% unless member.is_member == true %>
+              　<div class="row">
+                  <div class="left">
+                    <p><%= image_tag member.get_profile_image, :size => "100x100" %></p>
+               　  </div>
+                　<div class="right">
+                    <div class="right_row">
+                      <div class="name">
+                        <p><%= member.name %></p>
+                      </div>
+                      <div class="button_row">
+                       <!--フォローボタン-->
+                       <% unless member.id == current_member.id %>
+                         <%= render "relationships/follow_button", member: member %>
+                       <% end %>
+                     </div>
+                   </div>
+              　 </div>
+                  <div class="introduction">
+                    <p><%= member.introduction %></p>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
           </div>
-          <p><%= image_tag member.get_profile_image, :size => "100x100" %></p>
-          <p><%= member.name %></p>
-          <p><%= member.introduction %></p>
-          <% unless member.id == current_member.id %>
-          　<!--フォローボタン-->
-          　<%= render "relationships/follow_button", member: member %>
-          <% end %>
         <% end %>
       <% end %>
-    </div>
-  <% end %>
-  </div>
 
+  </div>
 </div>
