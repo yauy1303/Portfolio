@@ -19,17 +19,21 @@
 
     <div class="member_status">
       <div class="follow_link">
-        <p class="follow">フォロー: <%= @member.followings.count %></p>
-        <p class="follower">フォロワー: <%= @member.followeds.count %></p>
+        <%= link_to member_followings_path(@member) do %>
+          <p class="follow">フォロー: <%= @member.followings.count %></p>
+        <% end %>
+        <%= link_to  member_followeds_path(@member) do %>
+          <p class="follower">フォロワー: <%= @member.followeds.count %></p>
+        <% end %>
       </div>
       <div class="profile_button">
         <!--ログインユーザー認証-->
         <% if current_member == @member %>
           <div class="edit_button">
-            <%= button_to "編集", edit_member_path, method: :get, class: "button" %>
+            <%= button_to "プロフィール編集", edit_member_path, method: :get, class: "button" %>
           </div>
           <% else %>
-            <%= render "relationships/follow_button", locals: { member: @member } %>
+            <%= render "relationships/follow_button", member: @member %>
         <% end %>
       </div>
     </div>
@@ -38,18 +42,33 @@
       <div class="title">
         <h4><%= @member.name %>さんの投稿一覧</h4>
       </div>
-      <div class="index">
+      <div class="flex_outer">
         <% @articles.each do |article| %>
-          <p><%= image_tag article.get_article_image, :size => "150x150" %></p>
-          <p><%= article.title %></p>
-          <p>投稿者:<%= article.member.name %></p>
-          <p>日時:<%= article.created_at.strftime('%Y/%m/%d') %></p>
-          <div class="row">
-            <p>コメ<%= article.comments.count %></p>
-            <p>いいね<%= article.favorites.count %></p>
-          </div>
+          <%= link_to article_path(article.id) do %>
+            <div class="card">
+              <p class="image"><%= image_tag article.get_article_image, :size => "250x250" %></p>
+              <div class="caption">
+                <p class="title"><%= article.title %></p>
+                <p>投稿者:<%= article.member.name %></p>
+                <p>日時:<%= article.created_at.strftime('%Y/%m/%d') %></p>
+                <div class="row">
+                  <p>
+                    <span><i class="fa-regular fa-comments"></i></span>
+                    <%= article.comments.count %>
+                  </p>
+                  <p><span><i class="fa-solid fa-heart"></i></span>
+                    <%= article.favorites.count %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       </div>
+    </div>
+
+    <div class="paginate">
+      <%= paginate @articles %>
     </div>
 
   </div>
