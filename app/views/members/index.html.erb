@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="member_index">
 
     <div class="title">
@@ -9,7 +8,6 @@
     <% @members.each do |member| %>
       <%= link_to member_path(member.id) do %>
         <div class="member_list">
-
           <% if current_member.admin  %>
             <div class="row">
               <div class="left">
@@ -43,12 +41,11 @@
                 </div>
               </div>
             </div>
-
           <% else %>
             <% unless member.is_member == true %>
             　<div class="row">
                 <div class="left">
-                  <p><%= image_tag member.get_profile_image, :size => "100x100" %></p>
+                  <p><%= image_tag member.get_profile_image, :size => "150x150" %></p>
              　  </div>
               　<div class="right">
                   <div class="right_row">
@@ -60,13 +57,13 @@
                      <% unless member.id == current_member.id %>
                        <%= render "relationships/follow_button", member: member %>
                      <% end %>
+                    </div>
+                   </div>
+                   <div class="introduction">
+                     <p><%= member.introduction %></p>
                    </div>
                  </div>
             　 </div>
-                <div class="introduction">
-                  <p><%= member.introduction %></p>
-                </div>
-              </div>
             <% end %>
           <% end %>
         </div>
@@ -78,5 +75,4 @@
     </div>
 
   </div>
-
 </div>

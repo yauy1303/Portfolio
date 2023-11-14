@@ -68,11 +68,10 @@ body {
   background-image: url(back_image.jpg);
 }
 
-body p {
+body p,label {
   font-size: 14px;
   color: #333333;
 }
-
 
 /*body画面幅調整*/
 .wrapper {
@@ -86,6 +85,9 @@ body p {
   border:double 2px #c0c0c0;
   border-radius: 0;
   background: #fff;
+  max-width: 150px;
+  padding: 3px 15px;
+  font-size: 15px;
 }
 
 .button:hover {
@@ -319,12 +321,17 @@ body p {
 
 
 /*メンバー一覧*/
+.member_index {
+  background-color: #ffffcc;
+}
+
 .member_index a {
   text-decoration: none;
 }
 
-.member_index .title {
-  margin-bottom: 30px;
+.member_index .title h2{
+  padding-top: 50px;
+  text-align: center;
 }
 
 .member_index .member_list {
@@ -391,7 +398,7 @@ body p {
 }
 
 .profile_edit h2 {
-  margin-bottom: 25px;
+   margin: 0 0 25px 0;
 }
 
 .profile_edit .name_filed,.introduction_filed {
@@ -402,6 +409,46 @@ body p {
   margin-bottom: 20px;
 }
 
+
+/*新規投稿画面*/
+.article_new {
+  background-color: #ffffcc;
+  width: 55%;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+.article_new h2 {
+   margin: 0 0 25px 0;
+}
+
+.article_new .title_field,.image_filed,.tag_field {
+  margin-bottom: 15px;
+}
+
+.article_new .text_field {
+  margin-bottom: 25px;
+}
+
+/*投稿編集画面*/
+.article_edit {
+  background-color: #ffffcc;
+  width: 55%;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+.article_edit h2 {
+  margin: 0 0 25px 0;
+}
+
+.article_edit .title_field,.image_filed,.tag_field {
+  margin-bottom: 15px;
+}
+
+.article_edit .text_field {
+  margin-bottom: 25px;
+}
 
 
 /*フッター*/
