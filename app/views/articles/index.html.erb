@@ -1,11 +1,12 @@
 <div class="container">
-
   <div class="article_index">
-    aaaaaaaaaaaa
+
     <% @articles.each do |article| %>
-      <%= article.title %>
+      <div class="title">
+        <%= article.title %>
+      </div>
+
     <% end %>
 
   </div>
-
 </div>

@@ -1,104 +1,123 @@
 <div class="container">
+  <div class="article_show">
+    <div class="inner">
 
-  <div class="article_show_title">
-    <%= @article.title %>
-     <%= @article.created_at.strftime('%Y/%m/%d') %>
-  </div>
-
-  <div class="contributor_status">
-    <div class="row">
-      <div class="right">
-        <div class="contributor_image">
-          <%= link_to member_path(@article.member) do %>
-            <%= image_tag @member.get_profile_image, :size => "50x50" %>
-          <% end %>
-        </div>
-        <ul>
-          <li class="contributor_name">
-            <%= @member.name %>
-          </li>
-          <li class="article_tag">
+      <div class="title">
+        <h2><%= @article.title %></h2>
+        <p><%= @article.created_at.strftime('%Y/%m/%d') %>&nbsp;投稿</p>
+         <div class="tags">
             <% @tag.each do |tag| %>
-              <%= tag.tag_name %>
+              <label><i class="fa-solid fa-tag"></i><%= tag.tag_name %>&nbsp;</label>
             <% end %>
-          </li>
-        </ul>
+        </div>
       </div>
 
-      <div class="left">
-        <ul>
-          <% if @member.id != current_member.id %>
-            <li class="follow_button">
-              <!--未フォロー・フォロー条件分岐-->
-              <% if current_member.following?(@member) %>
-                <%= button_to "フォロー中", member_relationships_path(@member.id), method: :delete %>
-              <% else %>
-                <%= button_to "フォロー", member_relationships_path(@member.id), method: :post %>
-              <% end %>
-            </li>
-          <% elsif %>
-            <li class="article_edit_button">
-              <%= button_to "記事を編集する", edit_article_path, method: :get %>
-            </li>
-            <li class="article_destroy_button">
-              <%= button_to "記事を削除する", article_path(@article.id),   method: :delete, "data-confirm" => "本当に削除しますか？" %>
-            </li>
+      <div class="article_header">
+        <div class="image">
+          <%= link_to member_path(@article.member) do %>
+            <P class="user_image"><%= image_tag @member.get_profile_image, :size => "100x100" %></P>
           <% end %>
-        </ul>
+        </div>
+        <div class="column">
+          <div class="name">
+            <h4>投稿者：&nbsp;<b><%= @member.name %></b></h4>
+          </div>
+          <div class="article_button">
+            <div class="row">
+              <% if @member.id != current_member.id %>
+            　   <!--フォローボタン-->
+                <%= render "relationships/follow_button", member: @member %>
+              <% elsif %>
+                <div class="edit_button">
+                  <%= button_to "記事を編集する", edit_article_path, method: :get, class:"button" %>
+                </div>
+                <div class="destroy_button">
+                  <%= button_to "記事を削除する", article_path(@article.id),   method: :delete, "data-confirm" => "本当に削除しますか？", class:"button" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="article_body">
+        <div class="eyecatch">
+          <p><%= image_tag @article.get_article_image, :size => "600x600" %></p>
+        </div>
+        <div class="text">
+          <P><%= @article.text %></P>
+        </div>
+      </div>
+
+      <div class="favorite_button">
+        <% if @article.favorited_by?(current_member) %>
+          <div class="row">
+            <%= link_to article_favorites_path(@article), method: :delete do %>
+              <p><%= image_tag "favorite.png", :size => "60x60" %> </p>
+            <% end %>
+            <p><%= @article.favorites.count %></p>
+          </div>
+        <% else %>
+          <div class="row">
+            <%= link_to article_favorites_path(@article), method: :post do %>
+              <p><%= image_tag "favorite.png", :size => "60x60" %> </p>
+            <% end %>
+            <p><%= @article.favorites.count %></p>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="comment_index">
+        <h4>コメント</h4>
+        <% @article.comments.each do |comment| %>
+          <div class="row">
+            <div class="image">
+              <%= link_to member_path(comment.member) do %>
+                <p><%= image_tag comment.member.get_profile_image, :size => "100x100" %></p>
+              <% end %>
+            </div>
+            <div class="column">
+              <div class="name">
+                <p><%= comment.member.name %></p>
+              </div>
+              <div class="day">
+                <p><%= comment.created_at.strftime('%Y/%m/%d') %></p>
+              </div>
+            </div>
+            <div class="comment_button">
+              <div class="row">
+                <% if comment.member.id != current_member.id %>
+                  <!--フォローボタン-->
+                  <%= render "relationships/follow_button", member: @member %>
+                <% end %>
+                <% if comment.member.id == current_member.id %>
+                  <div class="comment_destroy_button">
+                    <%= button_to "コメント削除", article_comment_path(comment.article, comment), method: :delete, class: "button" %>
+                  </div>
+                <% elsif current_member.admin? %>
+                  <div class="admin_comment_destroy_button">
+                    <%= button_to "管理者用削除", article_comment_path(comment.article, comment), method: :delete, class: "button" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <div class="comment">
+            <p><%= comment.article_comment %></p>
+          </div>
+
+        <% end %>
+      </div>
+
+      <div class="comment_form">
+        <h4>コメント入力</h4>
+        <%= form_with model: [@article, @comment] do |f| %>
+          <%= f.text_area :article_comment, rows: "5", cols: "70", placeholder: "コメントをここに" %>
+          <p><%= f.submit "送信する", class: "button" %></p>
+        <% end %>
       </div>
 
     </div>
   </div>
-
-  <div class="article_body">
-    <div class="eyecatch">
-      <%= image_tag @article.get_article_image, :size => "500x500" %>
-    </div>
-    <div class="text">
-      <%= @article.text %>
-    </div>
-  </div>
-
-  <div class="favorite_button">
-    <% if @article.favorited_by?(current_member) %>
-      <%= link_to article_favorites_path(@article), method: :delete do %>
-        <button>いいね</button>
-        <%= @article.favorites.count %>
-      <% end %>
-    <% else %>
-      <%= link_to article_favorites_path(@article), method: :post do %>
-        <button>いいね</button>
-        <%= @article.favorites.count %>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div class="comment_index">
-    <h4>コメント</h4>
-    <% @article.comments.each do |comment| %>
-      <%= link_to member_path(comment.member) do %>
-        <%= image_tag comment.member.get_profile_image, :size => "50x50" %>
-      <% end %>
-      <%= comment.member.name %>
-      <%= comment.created_at.strftime('%Y/%m/%d') %>
-      <%= comment.article_comment %>
-      <% if comment.member.id == current_member.id %>
-        <div class="comment_destroy_button">
-          <%= button_to "コメント削除", article_comment_path(comment.article, comment), method: :delete %>
-        </div>
-      <% elsif current_member.admin? %>
-        <div class="admin_comment_destroy_button">
-          <%= button_to "管理者用削除", article_comment_path(comment.article, comment), method: :delete %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div class="comment_form">
-    <%= form_with model: [@article, @comment] do |f| %>
-      <%= f.text_area :article_comment, rows: "5", cols: "50", placeholder: "コメントをここに" %>
-      <%= f.submit "送信する" %>
-    <% end %>
-  </div>
-
 </div>

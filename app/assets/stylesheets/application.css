@@ -451,6 +451,117 @@ body p,label {
 }
 
 
+/*記事詳細画面*/
+.article_show {
+  background-color: #ffffcc;
+  padding: 50px 0;
+}
+
+.article_show .inner {
+  width: 750px;
+  margin: 0 auto;
+}
+
+.article_show .title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.article_show .title h2 {
+  margin-bottom: 5px;
+}
+
+.article_show .title p{
+  margin: 0;
+}
+
+.article_show .article_header {
+  display: flex;
+  margin-bottom: 20px;
+  margin-left: 30px;
+}
+
+.article_show .article_header .image {
+  margin:0 30px 0 0;
+}
+
+.article_show .article_header img {
+  border-radius: 50%;
+}
+
+.article_show .article_header .article_button .row {
+  display: flex;
+}
+
+.article_show .article_body .eyecatch p {
+  text-align: center;
+}
+
+.article_show .article_body .text p {
+  margin-bottom:50px;
+}
+
+.article_show .favorite_button .row {
+  display:flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.article_show .favorite_button .row p:nth-child(1) {
+  margin-right: 10px;
+}
+
+.article_show .favorite_button .row p:nth-child(2) {
+  font-size: 20px;
+}
+
+.article_show .comment_index {
+  margin-bottom: 100px;
+  background:#EDA6A6;
+  width: 100%;
+  padding: 50px;
+  margin-bottom: 50px;
+}
+
+.article_show .comment_index .row {
+  display: flex;
+  align-items: center;
+}
+
+.article_show .comment_index h4 {
+  text-align: center;
+  margin: 0;
+}
+
+.article_show .comment_index .row p {
+  margin: 0;
+}
+
+.article_show .comment_index .row .image {
+  margin-right: 20px;
+}
+
+.article_show .comment_index .row .image img {
+  border-radius: 50%;
+}
+
+.article_show .comment_index .row .comment_button {
+   margin-left: 50px;
+}
+
+.article_show .comment_index .row .comment_button row {
+  display: flex;
+}
+
+.article_show .comment {
+ border-top: 1px solid #EDD5D5;
+}
+
+.article_show .comment_form {
+  text-align: center;
+}
+
 /*フッター*/
 .footer {
   width: 100%;
