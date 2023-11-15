@@ -272,9 +272,14 @@ body p,label {
   margin: 0 3%;
 }
 
+.member_show .article_index .title {
+  text-align: center;
+}
+
 .member_show .article_index .flex_outer {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .member_show .article_index .flex_outer .card {
@@ -303,7 +308,7 @@ body p,label {
 
 .member_show .article_index .flex_outer .card .title {
   font-weight: bold;
-  font-size: 15px;
+  font-size: 13px;
   margin-bottom: 5px;
 }
 
@@ -560,6 +565,68 @@ body p,label {
 
 .article_show .comment_form {
   text-align: center;
+}
+
+
+/*投稿一覧*/
+.articles .article_index {
+  margin: 0 3%;
+}
+
+.articles .article_index .title {
+  text-align: center;
+}
+
+.articles a {
+  text-decoration: none;
+}
+
+.articles .article_index .flex_outer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.articles .article_index .flex_outer .card {
+  background: #ffffcc;
+  width: 255px;
+  margin: 5px;
+  padding: 3px;
+}
+
+.articles .article_index .flex_outer .card .caption {
+  margin-left: 10px;
+}
+
+.articles .article_index .flex_outer .card a{
+  text-decoration: none;
+}
+
+.articles .article_index .flex_outer .card p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.articles .article_index .flex_outer .card .image {
+  text-align: center;
+}
+
+.articles .article_index .flex_outer .card .title {
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.articles .article_index .flex_outer .card .row {
+  display: flex;
+}
+
+.articles .article_index .flex_outer .card .row p:first-child {
+  margin-right: 10px;
+}
+
+.articles .article_index .flex_outer .card .row span {
+  margin-right: 3px;
 }
 
 /*フッター*/
