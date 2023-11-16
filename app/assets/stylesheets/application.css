@@ -24,9 +24,9 @@
 /*ヘッダー*/
 .header {
   width: 100%;
-  padding: 30px 4% 10px;
+  padding: 10px 15% 0;
   margin-bottom: 100px;
-  background-color: #fff;
+  background-color:#E6FFFC;
   display: flex;
   align-items: center;
 }
@@ -37,19 +37,34 @@
   font-size: 20px;
 }
 
+.logo p {
+  margin: 0;
+}
+
 .nav {
   margin: 0 0 0 auto;
+}
+
+.nav .button {
+  padding: 0 3px;
 }
 
 .nav ul {
   list-style: none;
   margin: 0;
   display: flex;
+  align-items: center;
+  padding-top: 10px;
+  padding-left: 0;
 }
 
 .nav ul li {
   margin: 0 0 0 15px;
   font-size: 14px;
+}
+
+.nav ul li:first-child {
+  margin: 0;
 }
 
 .nav ul li a {
@@ -102,53 +117,6 @@ body p,label {
   margin-top: 30px;
 }
 
-/*カード共通*/
-/*.flex_outer {*/
-/*  display: flex;*/
-/*  flex-wrap: wrap;*/
-/*  justify-content: center;*/
-/*}*/
-
-/*.flex_outer .card {*/
-/*  background: #ffffcc;*/
-/*  width: 255px;*/
-/*  margin: 5px;*/
-/*  padding: 3px;*/
-/*}*/
-
-/*.flex_outer .card .caption {*/
-/*  margin-left: 10px;*/
-/*}*/
-
-/*.flex_outer .card a{*/
-/*  text-decoration: none;*/
-/*}*/
-
-/*.flex_outer .card p {*/
-/*  margin: 0;*/
-/*  font-size: 13px;*/
-/*}*/
-
-/*.flex_outer .card .image {*/
-/*  text-align: center;*/
-/*}*/
-
-/*.flex_outer .card .title {*/
-/*  font-weight: bold;*/
-/*  font-size: 13px;*/
-/*  margin-bottom: 5px;*/
-/*}*/
-
-/*.flex_outer .card .row {*/
-/*  display: flex;*/
-/*}*/
-
-/*.flex_outer .card .row p:first-child {*/
-/*  margin-right: 10px;*/
-/*}*/
-
-/*.flex_outer .card .row span {*/
-/*  margin-right: 3px;*/
 
 
 /*ログイン画面*/
@@ -374,7 +342,6 @@ body p,label {
 .top .new_index .link a:hover {
   color: #0067C0;
 }
-
 
 
 /*サイトについて*/

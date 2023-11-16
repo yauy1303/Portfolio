@@ -15,23 +15,24 @@
   <!--ヘッダー-->
   <header class="header">
     <h1 class="logo">
-      <%= link_to "WanPal", root_path %>
+      <%= link_to root_path do %>
+        <p><%= image_tag "logo.png", :size => "80x80" %></p>
+      <% end %>
     </h1>
 
-    <!--検索フォーム-->
-    <div clsaa="search">
-      <div class="search_form">
-        <%= search_form_for @q, url: search_articles_path do |f| %>
-          <%= f.label :title_cont, class:"search_icon" do %>
-            <i class="fa-solid fa-magnifying-glass"></i>
-          <% end %>
-          <%= f.search_field :title_cont, :placeholder => "投稿名" %>
-          <%= f.submit "検索" %>
-        <% end %>
-      </div>
-    </div>
-
     <nav class="nav">
+      <!--検索フォーム-->
+      <div clsaa="search">
+        <div class="search_form">
+          <%= search_form_for @q, url: search_articles_path do |f| %>
+            <%= f.label :title_cont, class:"search_icon" do %>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            <% end %>
+            <%= f.search_field :title_cont, :placeholder => "投稿名" %>
+            <%= f.submit "検索", class:"button" %>
+          <% end %>
+        </div>
+      </div>
       <ul>
         <!--ログイン前-->
           <li><%= link_to "サイトについて", about_path %></li>
@@ -45,7 +46,7 @@
           <li><%= link_to "投稿一覧", articles_path %></li>
           <li><%= link_to "マイページ", member_path(current_member.id) %></li>
           <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></li>
-          <li><%= button_to "投稿する", new_article_path,  method: :get %></li>
+          <li><%= button_to "投稿する", new_article_path,  method: :get, class:"button" %></li>
         <% end %>
       </ul>
     </nav>
@@ -53,7 +54,7 @@
 
   <body>
     <div class="wrapper">
-      
+
       <!--通知-->
       <div class="notice">
         <%= flash[:notice] %>
@@ -61,14 +62,14 @@
       <div class="alert">
         <%= flash[:alert] %>
       </div>
-    
+
       <%= yield %>
-      
+
     </div>
   </body>
 
-  <!--フッター-->
-  <!--<footer class="footer">-->
-  <!--</footer>-->
+  フッター
+  <footer class="footer">
+  </footer>
 
 </html>
