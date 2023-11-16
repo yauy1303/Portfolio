@@ -102,6 +102,54 @@ body p,label {
   margin-top: 30px;
 }
 
+/*カード共通*/
+/*.flex_outer {*/
+/*  display: flex;*/
+/*  flex-wrap: wrap;*/
+/*  justify-content: center;*/
+/*}*/
+
+/*.flex_outer .card {*/
+/*  background: #ffffcc;*/
+/*  width: 255px;*/
+/*  margin: 5px;*/
+/*  padding: 3px;*/
+/*}*/
+
+/*.flex_outer .card .caption {*/
+/*  margin-left: 10px;*/
+/*}*/
+
+/*.flex_outer .card a{*/
+/*  text-decoration: none;*/
+/*}*/
+
+/*.flex_outer .card p {*/
+/*  margin: 0;*/
+/*  font-size: 13px;*/
+/*}*/
+
+/*.flex_outer .card .image {*/
+/*  text-align: center;*/
+/*}*/
+
+/*.flex_outer .card .title {*/
+/*  font-weight: bold;*/
+/*  font-size: 13px;*/
+/*  margin-bottom: 5px;*/
+/*}*/
+
+/*.flex_outer .card .row {*/
+/*  display: flex;*/
+/*}*/
+
+/*.flex_outer .card .row p:first-child {*/
+/*  margin-right: 10px;*/
+/*}*/
+
+/*.flex_outer .card .row span {*/
+/*  margin-right: 3px;*/
+
 
 /*ログイン画面*/
 .login {
@@ -164,6 +212,80 @@ body p,label {
   text-align: right;
 }
 
+/*トップページ*/
+.top {
+
+}
+
+.top a {
+  text-decoration: none;
+}
+
+.top .ranking_index {
+  margin: 0 3%;
+}
+
+.top .ranking_index .title {
+  text-align: center;
+}
+
+.top .ranking_index .flex_outer .card{
+  position: relative;
+}
+
+.top .ranking_index .flex_outer .card .rank_icon p{
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.top .ranking_index .flex_outer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.top .ranking_index .flex_outer .card {
+  background: #ffffcc;
+  width: 255px;
+  margin: 5px;
+  padding: 3px;
+}
+
+.top .ranking_index .flex_outer .card .caption {
+  margin-left: 10px;
+}
+
+.top .ranking_index .flex_outer .card a{
+  text-decoration: none;
+}
+
+.top .ranking_index .flex_outer .card p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.top .ranking_index .flex_outer .card .image {
+  text-align: center;
+}
+
+.top .ranking_index .flex_outer .card .title {
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.top .ranking_index .flex_outer .card .row {
+  display: flex;
+}
+
+.top .ranking_index .flex_outer .card .row p:first-child {
+  margin-right: 10px;
+}
+
+.top .ranking_index .flex_outer .card .row span {
+  margin-right: 3px;
+}
 
 /*サイトについて*/
 .about {
