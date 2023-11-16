@@ -75,7 +75,7 @@
 
 /*body*/
 body {
-  margin: 0;
+  margin: 0 0 140px 0;
   padding: 0;
   line-height: 1.7;
   /*font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
@@ -116,7 +116,6 @@ body p,label {
   text-align: center;
   margin-top: 30px;
 }
-
 
 
 /*ログイン画面*/
@@ -1025,9 +1024,8 @@ body p,label {
 /*フッター*/
 .footer {
   width: 100%;
-  margin-top: auto;
   padding: 30px 4% 10px;
-  background-color: #fff;
-  /*position: fixed;*/
+  background-color: #E6FFFC;
+  position: fixed;
   bottom: 0;
 }
