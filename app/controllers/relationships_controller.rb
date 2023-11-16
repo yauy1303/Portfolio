@@ -16,11 +16,13 @@ class RelationshipsController < ApplicationController
   def followings
     member = Member.find(params[:member_id])
     @member = member.followings
+    @view_name = Member.find(params[:member_id])
   end
 
   def followeds
     member = Member.find(params[:member_id])
     @member = member.followeds
+    @view_name = Member.find(params[:member_id])
   end
 
 end

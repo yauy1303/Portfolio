@@ -629,6 +629,220 @@ body p,label {
   margin-right: 3px;
 }
 
+/*フォロー一覧画面*/
+.followings_index {
+  background: #ffffcc;
+}
+
+.followings_index a {
+  text-decoration: none;
+}
+
+.followings_index .nil_title {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.followings_index .title h2{
+  padding-top: 50px;
+  text-align: center;
+}
+
+.followings_index .title a {
+  color: #333;
+}
+
+.followings_index .title a:hover {
+  text-decoration: underline;
+}
+
+.followings_index .member_list {
+  background-color: #ffffcc;
+  padding: 20px 100px;
+}
+
+.followings_index .member_list:hover {
+  background-color:#B3B3B3
+}
+
+.followings_index .member_list .row {
+  display: flex;
+}
+
+.followings_index .member_list .row .left {
+  margin-right: 30px;
+}
+
+.followings_index .member_list .row .left img {
+  border-radius: 50%;
+}
+
+.followings_index .member_list .row .right .right_row {
+  display: flex;
+  margin-top: 30px;
+  align-items: center;
+}
+
+.followings_index .member_list .row .right .right_row .name p{
+  font-size: 25px;
+  font-weight: bold;
+  margin: 0;
+  padding-right: 50px;
+}
+
+.followings_index .member_list .row .right .right_row .button_row {
+  display: flex;
+  align-items: center;
+}
+
+.followings_index .member_list .row .right .right_row .button_row .button {
+  width: 150px;
+  padding: 10px;
+}
+
+.followings_index .member_list .row .right .right_row .button_row .out_button {
+  margin-right: 10px;
+}
+
+
+/*フォロワー一覧画面*/
+.followeds_index {
+  background: #ffffcc;
+}
+
+.followeds_index a {
+  text-decoration: none;
+}
+
+.followeds_index .nil_title {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.followeds_index .title h2{
+  padding-top: 50px;
+  text-align: center;
+}
+
+.followeds_index .title a {
+  color: #333;
+}
+
+.followeds_index .title a:hover {
+  text-decoration: underline;
+}
+
+.followeds_index .member_list {
+  background-color: #ffffcc;
+  padding: 20px 100px;
+}
+
+.followeds_index .member_list:hover {
+  background-color:#B3B3B3
+}
+
+.followeds_index .member_list .row {
+  display: flex;
+}
+
+.followeds_index .member_list .row .left {
+  margin-right: 30px;
+}
+
+.followeds_index .member_list .row .left img {
+  border-radius: 50%;
+}
+
+.followeds_index .member_list .row .right .right_row {
+  display: flex;
+  margin-top: 30px;
+  align-items: center;
+}
+
+.followeds_index .member_list .row .right .right_row .name p{
+  font-size: 25px;
+  font-weight: bold;
+  margin: 0;
+  padding-right: 50px;
+}
+
+.followeds_index .member_list .row .right .right_row .button_row {
+  display: flex;
+  align-items: center;
+}
+
+.followeds_index .member_list .row .right .right_row .button_row .button {
+  width: 150px;
+  padding: 10px;
+}
+
+.followeds_index .member_list .row .right .right_row .button_row .out_button {
+  margin-right: 10px;
+}
+
+
+/*検索結果一覧画面*/
+.searches a {
+  text-decoration: none;
+}
+
+.searches .search_index {
+  margin: 0 3%;
+}
+
+.searches .search_index .title {
+  text-align: center;
+}
+
+.searches .search_index .flex_outer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.searches .search_index .flex_outer .card {
+  background: #ffffcc;
+  width: 255px;
+  margin: 5px;
+  padding: 3px;
+}
+
+.searches .search_index .flex_outer .card .caption {
+  margin-left: 10px;
+}
+
+.searches .search_index .flex_outer .card a{
+  text-decoration: none;
+}
+
+.searches .search_index .flex_outer .card p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.searches .search_index .flex_outer .card .image {
+  text-align: center;
+}
+
+.searches .search_index .flex_outer .card .title {
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.searches .search_index .flex_outer .card .row {
+  display: flex;
+}
+
+.searches .search_index .flex_outer .card .row p:first-child {
+  margin-right: 10px;
+}
+
+.searches .search_index .flex_outer .card .row span {
+  margin-right: 3px;
+}
+
+
 /*フッター*/
 .footer {
   width: 100%;
