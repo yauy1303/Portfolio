@@ -83,7 +83,12 @@ body {
   line-height: 1.7;
   /*font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
   /*background-color: #e6e6e6;*/
-  background-image: url(back_image.jpg);
+
+  /*デプロイ用*/
+  background-image: image-url("back_image.jpg");
+
+  /*開発用*/
+  /*background-image: url("back_image.jpg");*/
 }
 
 body p,label {
