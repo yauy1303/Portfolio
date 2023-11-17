@@ -1,2 +1,79 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class ="container">
+  <div class="top">
+
+    <div class="ranking_index">
+      <div class="title">
+        <h2>人気記事</h2>
+      </div>
+      <div class="flex_outer">
+        <% @article_like_ranks.each.with_index(1) do |article, i| %>
+          <%= link_to article_path(article.id) do %>
+            <div class="card">
+              <p class="image"><%= image_tag article.get_article_image, :size => "250x250" %></p>
+               <% if i == 1 %>
+                <div class="rank_icon">
+                  <p><%= image_tag "rank1.png", :size => "50x50" %></p>
+                </div>
+              <% elsif i == 2 %>
+                <div class="rank_icon">
+                  <p><%= image_tag "rank2.png", :size => "50x50" %></p>
+                </div>
+              <% else i == 3 %>
+                <div class="rank_icon">
+                  <p><%= image_tag "rank3.png", :size => "50x50" %></p>
+                </div>
+              <% end %>
+              <div class="caption">
+                <p class="title"><%= article.title %></p>
+                <p>投稿者:<%= article.member.name %></p>
+                <p>日時:<%= article.created_at.strftime('%Y/%m/%d') %></p>
+                <div class="row">
+                  <p>
+                    <span><i class="fa-regular fa-comments"></i></span>
+                    <%= article.comments.count %>
+                  </p>
+                  <p><span><i class="fa-solid fa-heart"></i></span>
+                    <%= article.favorites.count %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="new_index">
+      <div class="title">
+        <h2>新着記事</h2>
+      </div>
+      <div class="flex_outer">
+        <% @new_article.each do |article| %>
+           <%= link_to article_path(article.id) do %>
+            <div class="card">
+              <p class="image"><%= image_tag article.get_article_image, :size => "250x250" %></p>
+              <div class="caption">
+                <p class="title"><%= article.title %></p>
+                <p>投稿者:<%= article.member.name %></p>
+                <p>日時:<%= article.created_at.strftime('%Y/%m/%d') %></p>
+                <div class="row">
+                  <p>
+                    <span><i class="fa-regular fa-comments"></i></span>
+                    <%= article.comments.count %>
+                  </p>
+                  <p><span><i class="fa-solid fa-heart"></i></span>
+                    <%= article.favorites.count %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="link">
+        <p><%= link_to  "すべての投稿へ", articles_path %></p>
+      </div>
+    </div>
+
+  </div>
+</div>

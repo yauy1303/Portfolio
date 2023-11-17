@@ -1,2 +1,31 @@
-<h1>Members#edit</h1>
-<p>Find me in app/views/members/edit.html.erb</p>
+<div class="container">
+  <div class="profile_edit">
+
+    <h2>プロフィール編集</h2>
+
+    <%= form_with model: @member, url: member_path(@member.id), method: :patch do |f| %>
+      <div class="name_filed">
+        <%= f.label "メンバーネーム" %><br />
+        <%= f.text_field :name, size: "30" %>
+      </div>
+
+      <div class="introduction_filed">
+        <%= f.label "自己紹介" %><br />
+        <%= f.text_area :introduction, size: "55x8" %>
+      </div>
+
+      <div class="image_filed">
+        <%= f.label "プロフィール画像" %><br />
+        <%= f.file_field :profile_image, accept: "image/*" %>
+      </div>
+
+      <div class="save_button">
+         <%= f.submit '変更を保存', class: "button" %>
+      </div>
+    <% end %>
+
+
+  </div>
+</div>
+
+

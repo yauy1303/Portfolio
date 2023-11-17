@@ -1,2 +1,31 @@
-<h1>Articles#new</h1>
-<p>Find me in app/views/articles/new.html.erb</p>
+<div class="conteiner">
+  <div class="article_new">
+
+    <h2>記事の投稿</h2>
+
+    <%= form_with model: @article, url: articles_path(@article.id), method: :post do |f| %>
+      <div class="title_field">
+        <%= f.label "タイトル" %><br />
+        <%= f.text_field :title, size: "30" %>
+      </div>
+      <div class="image_filed">
+         <%= f.label "アイキャッチ画像" %><br />
+         <%= f.file_field :article_image, accept: "image/*" %>
+      </div>
+      <div class="tag_field">
+        <%= f.label "タグ (,で区切ると複数タグ登録できます)" %><br />
+        <%= f.text_field :tag_name, size: "30" %>
+      </div>
+      <div class="text_field">
+         <%= f.label "本文" %><br />
+         <%= f.text_area :text, size: "55x8" %>
+      </div>
+      <div class="post_button">
+        <%= f.submit '投稿', class:"button" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
+

@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2023_11_04_042628) do
   end
 
   create_table "articles", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "member_id"
     t.string "title"
     t.string "text"
     t.datetime "created_at", precision: 6, null: false
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2023_11_04_042628) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "member_id"
     t.integer "article_id"
     t.string "article_comment"
     t.datetime "created_at", precision: 6, null: false
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2023_11_04_042628) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "member_id"
     t.integer "article_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -91,10 +91,11 @@ ActiveRecord::Schema.define(version: 2023_11_04_042628) do
     t.integer "tag_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id", "tag_id"], name: "index_tag_relationships_on_article_id_and_tag_id", unique: true
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "tag_name"
+    t.string "tag_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

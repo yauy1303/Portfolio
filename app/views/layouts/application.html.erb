@@ -6,11 +6,24 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!--fontawesome-->
+    <script src="https://kit.fontawesome.com/e9e6566511.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <!--ヘッダー-->
+  <%= render 'layouts/header' %>
+
   <body>
-    <%= yield %>
+    <div class="wrapper">
+      <!--通知-->
+      <%= render 'layouts/notice' %>
+      <%= yield %>
+    </div>
   </body>
+
+  <!--フッター-->
+  <%= render 'layouts/footer' %>
+
 </html>
