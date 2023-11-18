@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
+
   # 検索機能
   before_action :set_article_search
 
@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
      @q = Article.ransack(params[:q])
      @articles = @q.result
   end
+
+    def after_sign_in_path_for(resource)
+      member_path(@member.id)
+    end
 
   protected
 

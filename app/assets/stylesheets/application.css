@@ -86,7 +86,7 @@ body {
 
   /*デプロイ用*/
   background-image: image-url("back_image.jpg");
-  
+
   /*開発用*/
   /*background-image: url("back_image.jpg");*/
 }
@@ -116,6 +116,11 @@ body p,label {
 .button:hover {
   color: #000;
   background: #FFF450;
+}
+
+/*フォローボタン*/
+.follow_button {
+  z-index: 10;
 }
 
 
@@ -188,10 +193,6 @@ body p,label {
 }
 
 /*トップページ*/
-.top {
-
-}
-
 .top a {
   text-decoration: none;
 }
