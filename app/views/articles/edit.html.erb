@@ -3,7 +3,7 @@
 
     <h2>記事の編集</h2>
 
-    <%= form_with model: @article, url: articles_path(@article.id), method: :post do |f| %>
+    <%= form_with model: @article, url: article_path(@article.id), method: :patch do |f| %>
       <div class="title_field">
         <%= f.label "タイトル" %><br />
         <%= f.text_field :title, size: "30" %>
