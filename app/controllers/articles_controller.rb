@@ -27,11 +27,12 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.member_id = current_member.id
     tag_list = params[:article][:tag_name].split(",")
-    if @article.save!
+    # if @article.save!
+    if @article.save
        @article.save_tag(tag_list)
        redirect_to article_path(@article.id), notice:"投稿しました"
     else
-       render :new
+      redirect_to new_article_path, notice:"タイトルを入力してください"
     end
   end
 

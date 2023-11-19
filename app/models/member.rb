@@ -4,6 +4,9 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # バリデーション
+  validates :name, presence: true
+
   # ゲストログイン
   def self.guest
     find_or_create_by!(email: 'guest@guest') do |member|
@@ -58,5 +61,6 @@ class Member < ApplicationRecord
   def active_for_authentication?
     self.is_member == false
   end
+
 
 end

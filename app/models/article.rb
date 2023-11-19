@@ -14,6 +14,9 @@ class Article < ApplicationRecord
 
   belongs_to :member
 
+  # バリデーション
+  validates :title, presence: true
+
   # 画像投稿用（アクティブストレージ）
   has_one_attached :article_image
 
