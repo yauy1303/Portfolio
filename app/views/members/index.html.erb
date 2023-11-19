@@ -59,7 +59,7 @@
                     <!--フォローボタン-->
                     <% unless member.id == current_member.id %>
                       <%= render "relationships/follow_button", member: member %>
-                     <% end %>
+                    <% end %>
                    </div>
                  </div>
                  <div class="introduction">
@@ -68,8 +68,8 @@
                </div>
           　 </div>
           <% end %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     <% end %>
 
     <div class="paginate">
