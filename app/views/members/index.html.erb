@@ -7,6 +7,7 @@
 
     <% @members.each do |member| %>
       <div class="member_list">
+        <!--管理者権限-->
         <% if current_member.admin  %>
           <div class="row">
             <%= link_to member_path(member.id) do %>
@@ -20,8 +21,11 @@
                   <p><%= member.name %></p>
                 </div>
                 <div class="button_row">
+                  <!--ボタン分岐/管理者-->
                   <% if current_member.admin %>
+                    <!--管理者以外の一覧へのボタン表示-->
                     <% unless member.admin  == true %>
+                      <!--論理削除ボタン-->
                       <div class="out_button">
                         <% if member.is_member == false %>
                           <p><%= button_to "管理者退会", out_member_path(member), method: :patch, class:"button" %></p>
@@ -42,7 +46,9 @@
               </div>
             </div>
           </div>
+        <!--一般会員への表示-->
         <% else %>
+          <!--退会メンバーの非表示-->
           <% unless member.is_member == true %>
           　<div class="row">
           　   <%= link_to member_path(member.id) do %>
@@ -72,6 +78,7 @@
       </div>
     <% end %>
 
+    <!--ページネーション-->
     <div class="paginate">
       <%= paginate @members %>
     </div>
