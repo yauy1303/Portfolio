@@ -70,6 +70,11 @@ group :production do
   gem 'mysql2'
 end
 
+# デプロイ
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
+
+# devise フラッシュメッセージ日本語化
+gem 'rails-i18n'
+gem 'devise-i18n-views'
