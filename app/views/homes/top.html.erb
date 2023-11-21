@@ -75,5 +75,19 @@
       </div>
     </div>
 
+    <div class="tag_index">
+      <% @tag_list.each do |tag_list| %>
+        <label>
+          <i class="fa-solid fa-tag"></i>
+            <%= link_to tag_list.tag_name,  search_tag_article_path(tag_list.id) %>
+            <%="(#{tag_list.articles.count})" %>    
+          </label>
+      <% end %>
+      <div class="paginate">
+        <%= paginate @tag_list %>
+      </div>
+    </div>
+
+
   </div>
 </div>

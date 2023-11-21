@@ -129,15 +129,3 @@ article5.tags << tag9
 article5.tags << tag10
 article6.tags << tag11
 article6.tags << tag12
-
-
-# 5.times do |num|
-#   member =  Member.create!(
-#     name: "メンバー#{num + 1}",
-#     email: "email#{num + 1}@email",
-#     password: "password#{num + 1}",
-#     password_confirmation: "password#{num + 1}",
-#     admin: false)
-
-#     # member.get_profile_image
-# end

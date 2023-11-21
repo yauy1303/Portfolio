@@ -7,7 +7,11 @@
         <p><%= @article.created_at.strftime('%Y/%m/%d') %>&nbsp;投稿</p>
          <div class="tags">
             <% @tag.each do |tag| %>
-              <label><i class="fa-solid fa-tag"></i><%= tag.tag_name %>&nbsp;</label>
+               <label>
+                  <i class="fa-solid fa-tag"></i>
+                  <%= link_to tag.tag_name,  search_tag_article_path(tag.id) %>
+                  <%="(#{tag.articles.count})" %>
+              </label>
             <% end %>
         </div>
       </div>

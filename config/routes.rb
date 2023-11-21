@@ -28,10 +28,12 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]  # コメント機能
     resource :favorites, only: [:create, :destroy]  # いいね機能
     collection do
+      # 投稿検索
       get "search"
     end
+    member do
+      get "search_tag" => "articles#search_tag"
+    end
   end
-
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

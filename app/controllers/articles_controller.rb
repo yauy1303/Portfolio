@@ -8,6 +8,12 @@ class ArticlesController < ApplicationController
     @search_word = @q.title_cont
   end
 
+  def search_tag
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:id])
+    @articles = @tag.articles.page(params[:page]).per(9)
+  end
+
   def index
     @articles = Article.page(params[:page])
   end
