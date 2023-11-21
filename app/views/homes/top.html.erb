@@ -76,12 +76,17 @@
     </div>
 
     <div class="tag_index">
+      <div class="title">
+        <h2>タグ検索</h2>
+      </div>
       <% @tag_list.each do |tag_list| %>
-        <label>
-          <i class="fa-solid fa-tag"></i>
-            <%= link_to tag_list.tag_name,  search_tag_article_path(tag_list.id) %>
-            <%="(#{tag_list.articles.count})" %>    
-          </label>
+        <% if tag_list.articles.count > 0 %>
+          <label>
+            <i class="fa-solid fa-tag"></i>
+              <%= link_to tag_list.tag_name,  search_tag_article_path(tag_list.id) %>
+              <%="(#{tag_list.articles.count})" %>
+            </label>
+        <% end %>
       <% end %>
       <div class="paginate">
         <%= paginate @tag_list %>
