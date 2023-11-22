@@ -1,0 +1,17 @@
+<div class="favorite_button">
+  <% if article.favorited_by?(current_member) %>
+    <div class="row">
+      <%= link_to article_favorites_path(article), method: :delete,remote: true do %>
+        <p><%= image_tag "favorite.png", :size => "60x60" %> </p>
+      <% end %>
+      <p><%= article.favorites.count %></p>
+    </div>
+  <% else %>
+    <div class="row">
+      <%= link_to article_favorites_path(article), method: :post, remote: true do %>
+        <p><%= image_tag "favorite.png", :size => "60x60" %> </p>
+      <% end %>
+      <p><%= article.favorites.count %></p>
+    </div>
+  <% end %>
+</div>
