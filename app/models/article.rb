@@ -15,7 +15,7 @@ class Article < ApplicationRecord
   belongs_to :member
 
   # バリデーション
-  validates :title, presence: true
+  validates :title, presence: true, length: { in: 1..40 }
 
   # 画像投稿用（アクティブストレージ）
   has_one_attached :article_image
@@ -39,18 +39,32 @@ class Article < ApplicationRecord
       self.tags.delete Tag.find_by(tag_name: old)
     end
 
+    # new_tags.each do |new|
+    #   new_post_tag = Tag.find_or_create_by(tag_name: new)
+    #   self.tags << new_post_tag
+    # end
+
     new_tags.each do |new|
-      new_post_tag = Tag.find_or_create_by(tag_name: new)
+      truncated_tag = new[0, 30] # タグを30文字以内に制限する
+      new_post_tag = Tag.find_or_create_by(tag_name: truncated_tag)
       self.tags << new_post_tag
     end
+
   end
 
   # Updateの時、タグの数を減らした際の記述
   def update_tag(tag_list)
     tag_relationships.map(&:destroy)
     return unless tag_list
+
+    # tag_list.each do |tag|
+    #   tag = Tag.find_or_create_by(tag_name: tag)
+    #   TagRelationship.create!(tag: tag, article: self)
+    # end
+
     tag_list.each do |tag|
-      tag = Tag.find_or_create_by(tag_name: tag)
+      truncated_tag = tag[0, 30] # タグを30文字以内に制限する
+      tag = Tag.find_or_create_by(tag_name: truncated_tag)
       TagRelationship.create!(tag: tag, article: self)
     end
   end

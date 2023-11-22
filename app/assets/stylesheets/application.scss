@@ -794,6 +794,10 @@ body p,label {
  border-top: 1px solid #EDD5D5;
 }
 
+.article_show .comment p {
+ margin: 0 0 20px 0;
+}
+
 .article_show .comment_form {
   text-align: center;
 }
@@ -869,8 +873,9 @@ body p,label {
 }
 
 .articles .pagination {
- background: #FFFF8F;
- max-width: 300px;
+ background:rgba(255,255,143,0.8);
+ display: inline-block;
+ padding: 0 20px;
  margin: 0 auto;
 }
 

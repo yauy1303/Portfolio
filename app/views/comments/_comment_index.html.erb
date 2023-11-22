@@ -1,0 +1,39 @@
+<% article.comments.each do |comment| %>
+  <div class="row">
+    <div class="image">
+      <%= link_to member_path(comment.member), remote:true do %>
+        <p><%= image_tag comment.member.get_profile_image, :size => "100x100" %></p>
+      <% end %>
+    </div>
+    <div class="column">
+      <div class="name">
+        <p><%= comment.member.name %></p>
+      </div>
+      <div class="day">
+        <p><%= comment.created_at.strftime('%Y/%m/%d') %></p>
+      </div>
+    </div>
+    <div class="comment_button">
+      <div class="row">
+        <% if comment.member.id != current_member.id %>
+          <!--フォローボタン-->
+          <%= render "relationships/follow_button", member: comment.member %>
+        <% end %>
+        <% if comment.member.id == current_member.id %>
+          <div class="comment_destroy_button">
+            <%= button_to "コメント削除", article_comment_path(comment.article, comment), method: :delete, remote:true, class: "button" %>
+          </div>
+        <% elsif current_member.admin? %>
+          <div class="admin_comment_destroy_button">
+            <%= button_to "管理者用削除", article_comment_path(comment.article, comment), method: :delete, remote:true, class: "button" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="comment">
+  　<%= form_with model: [article, comment] do |f| %>
+      <p><%= comment.article_comment %></p>
+    <% end %>
+  </div>
+<% end %>
