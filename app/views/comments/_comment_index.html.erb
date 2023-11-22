@@ -17,7 +17,9 @@
       <div class="row">
         <% if comment.member.id != current_member.id %>
           <!--フォローボタン-->
-          <%= render "relationships/follow_button", member: comment.member %>
+           <div id="comment_ajax_follow_<%= comment.member.id %>">
+        　    <%= render "relationships/follow_button", member: comment.member %>
+        　  </div>
         <% end %>
         <% if comment.member.id == current_member.id %>
           <div class="comment_destroy_button">

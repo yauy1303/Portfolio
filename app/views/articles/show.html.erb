@@ -31,7 +31,9 @@
               <!--ログインユーザー以外の表示-->
               <% if @member.id != current_member.id %>
             　   <!--フォローボタン-->
-                <%= render "relationships/follow_button", member: @member %>
+            　  <div id="ajax_follow_<%= @article.member.id %>">
+            　     <%= render "relationships/follow_button", member: @member %>
+            　  </div>
               <!--ログインユーザーの表示  -->
               <% elsif %>
                 <div class="edit_button">
@@ -59,7 +61,7 @@
       <div id="ajax_favorite">
         <%= render "favorites/btn", article: @article %>
       </div>
-      
+
       <!--コメント欄-->
       <div class="comment_index">
         <% if @article.comments.exists? %>
