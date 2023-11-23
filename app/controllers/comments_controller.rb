@@ -4,7 +4,13 @@ class CommentsController < ApplicationController
     @article = Article.find(params[:article_id])
     comment = current_member.comments.new(comment_params)
     comment.article_id = @article.id
-    comment.save
+    # comment.save
+
+    if comment.save
+    else
+      redirect_to request.referer, alert:"メッセージを200字以内で入力してください"
+    end
+
     # 非同期通信対応
     # if comment.save
     #   redirect_to request.referer, notice: "コメントしました"
