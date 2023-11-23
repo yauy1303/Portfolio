@@ -31,9 +31,9 @@
               <!--ログインユーザー以外の表示-->
               <% if @member.id != current_member.id %>
             　   <!--フォローボタン-->
-            　  <div id="ajax_follow_<%= @article.member.id %>">
-            　     <%= render "relationships/follow_button", member: @member %>
-            　  </div>
+                <div id="ajax_follow_<%= @article.member.id %>">
+                  <%= render "relationships/follow_button", member: @member %>
+                </div>
               <!--ログインユーザーの表示  -->
               <% elsif %>
                 <div class="edit_button">

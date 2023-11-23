@@ -37,7 +37,9 @@
                   <% end %>
                   <!--フォローボタン-->
                   <% unless member.id == current_member.id %>
-                    <%= render "relationships/follow_button", member: member %>
+                    <div id="ajax_follow_<%= member.id %>">
+                      <%= render "relationships/follow_button", member: member %>
+                    </div>
                   <% end %>
                 </div>
               </div>
@@ -64,7 +66,9 @@
                   <div class="button_row">
                     <!--フォローボタン-->
                     <% unless member.id == current_member.id %>
-                      <%= render "relationships/follow_button", member: member %>
+                      <div id="ajax_follow_<%= member.id %>">
+                        <%= render "relationships/follow_button", member: member %>
+                      </div>
                     <% end %>
                    </div>
                  </div>

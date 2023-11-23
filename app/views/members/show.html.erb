@@ -33,7 +33,10 @@
             <%= button_to "プロフィール編集", edit_member_path, method: :get, class: "button" %>
           </div>
           <% else %>
-            <%= render "relationships/follow_button", member: @member %>
+            <!--フォローボタン-->
+            <div id="ajax_follow_<%= @member.id %>">
+              <%= render "relationships/follow_button", member: @member %>
+            </div>
         <% end %>
       </div>
     </div>

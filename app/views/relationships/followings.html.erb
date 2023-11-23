@@ -17,6 +17,7 @@
 
     <% @member.each do |member| %>
       <div class="member_list">
+         <!--管理者権限-->
         <% if current_member.admin  %>
           <div class="row">
             <%= link_to member_path(member.id) do %>
@@ -30,9 +31,11 @@
                   <p><%= member.name %></p>
                 </div>
                 <div class="button_row">
+                  <!--管理者権限--><!--管理者権限-->
                   <% if current_member.admin %>
                     <% unless member.admin  == true %>
                       <div class="out_button">
+                        <!--退会ユーザーとアクティブユーザーの分岐-->
                         <% if member.is_member == false %>
                           <p><%= button_to "管理者退会", out_member_path(member), method: :patch, class:"button" %></p>
                         <% else %>
@@ -41,9 +44,12 @@
                       </div>
                     <% end %>
                   <% end %>
-                   <!--フォローボタン-->
+                   <!--他ユーザーの場合のみ表示-->
                    <% unless member.id == current_member.id %>
-                     <%= render "relationships/follow_button", member: member %>
+                     <!--フォローボタン-->
+                     <div id="ajax_follow_<%= member.id %>">
+                       <%= render "relationships/follow_button", member: member %>
+                     </div>
                    <% end %>
                 </div>
               </div>
@@ -53,6 +59,7 @@
             </div>
           </div>
         <% else %>
+          <!--退会ユーザーの非表示-->
           <% unless member.is_member == true %>
           　<div class="row">
               <div class="left">
@@ -66,9 +73,12 @@
                     <p><%= member.name %></p>
                   </div>
                   <div class="button_row">
-                   <!--フォローボタン-->
+                   <!--他ユーザーのみ表示-->
                    <% unless member.id == current_member.id %>
-                     <%= render "relationships/follow_button", member: member %>
+                     <!--フォローボタン-->
+                     <div id="ajax_follow_<%= member.id %>">
+                       <%= render "relationships/follow_button", member: member %>
+                     </div>
                    <% end %>
                   </div>
                  </div>

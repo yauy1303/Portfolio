@@ -15,12 +15,12 @@
     </div>
     <div class="comment_button">
       <div class="row">
-        <% if comment.member.id != current_member.id %>
-          <!--フォローボタン-->
-           <div id="comment_ajax_follow_<%= comment.member.id %>">
-        　    <%= render "relationships/follow_button", member: comment.member %>
-        　  </div>
-        <% end %>
+        <%# if comment.member.id != current_member.id %>
+       　  <!--フォローボタン-->
+      　   <!--<div id="comment_ajax_follow_<#%= comment.member.id %>">-->
+    　  　  <!--  <E%= render "relationships/follow_button", member: comment.member %>-->
+    　 　   <!--</div>-->
+        <%# end %>
         <% if comment.member.id == current_member.id %>
           <div class="comment_destroy_button">
             <%= button_to "コメント削除", article_comment_path(comment.article, comment), method: :delete, remote:true, class: "button" %>
