@@ -35,10 +35,10 @@ class ArticlesController < ApplicationController
     tag_list = params[:article][:tag_name].split(",")
     # if @article.save!
     if @article.save
-  　   @article.save_tag(tag_list)
-   　  redirect_to article_path(@article.id), notice:"投稿しました"
+      @article.save_tag(tag_list)
+      redirect_to article_path(@article.id), notice:"投稿しました"
     else
-      redirect_to new_article_path, notice:"タイトルを40字以内タグを30字以内で入力してください"
+      redirect_to new_article_path, notice:"タイトルを40字以内で入力してください"
     end
   end
 

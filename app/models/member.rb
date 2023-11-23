@@ -6,7 +6,7 @@ class Member < ApplicationRecord
 
   # バリデーション
   validates :name, presence: true, length: { maximum: 15 }
-  validates :introduction, length: { maximum: 160, message: "自己紹介は160字以内で入力してください"  }
+  validates :introduction, length: { maximum: 160 }
 
   # ゲストログイン
   def self.guest
