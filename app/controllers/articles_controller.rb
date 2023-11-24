@@ -8,6 +8,12 @@ class ArticlesController < ApplicationController
     @search_word = @q.title_cont
   end
 
+  def search_tag
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:id])
+    @articles = @tag.articles.page(params[:page]).per(9)
+  end
+
   def index
     @articles = Article.page(params[:page])
   end
@@ -27,11 +33,12 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.member_id = current_member.id
     tag_list = params[:article][:tag_name].split(",")
-    if @article.save!
-       @article.save_tag(tag_list)
-       redirect_to article_path(@article.id), notice:"投稿しました"
+    # if @article.save!
+    if @article.save
+      @article.save_tag(tag_list)
+      redirect_to article_path(@article.id), notice:"投稿しました"
     else
-       render :new
+      redirect_to new_article_path, notice:"タイトルを40字以内で入力してください"
     end
   end
 
@@ -47,7 +54,7 @@ class ArticlesController < ApplicationController
        @article.save_tag(tag_list)
        redirect_to article_path(@article.id), notice:"編集しました"
     else
-       render :edit
+       redirect_to edit_article_path(@article.id), alert:"タイトルを40字以内で入力してください"
     end
   end
 
@@ -61,7 +68,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :article_image, :text)
+    params.require(:article).permit(:title, :article_image, :content)
   end
 
 end

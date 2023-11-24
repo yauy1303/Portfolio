@@ -1,9 +1,9 @@
 <div class="container">
-  <div class="articles">
+  <div class="tag_search">
 
-    <div class="article_index">
+    <div class="serch_result">
       <div class="title">
-        <h2>投稿一覧</h2>
+        <h2>タグが"<%=@tag.tag_name%>"の投稿一覧</h2>
       </div>
       <div class="flex_outer">
         <% @articles.each do |article| %>
@@ -11,7 +11,7 @@
             <div class="card">
               <p class="image"><%= image_tag article.get_article_image, :size => "250x250",loading: 'lazy' %></p>
               <div class="caption">
-                <p class="title"><%= article.title.truncate(17, omission: '..') %></p>
+                <p class="title"><%= article.title %></p>
                 <p>投稿者:<%= article.member.name %></p>
                 <p>日時:<%= article.created_at.strftime('%Y/%m/%d') %></p>
                 <div class="row">

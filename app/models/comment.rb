@@ -5,6 +5,5 @@ class Comment < ApplicationRecord
   belongs_to :article
 
   # バリデーション
-  validates :article_comment, presence: true
-  validates :article_comment, length: { in: 1..280 }
+  validates :article_comment, presence: true, length: { in: 1..200 }
 end

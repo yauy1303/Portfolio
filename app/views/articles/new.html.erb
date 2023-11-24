@@ -13,12 +13,12 @@
          <%= f.file_field :article_image, accept: "image/*" %>
       </div>
       <div class="tag_field">
-        <%= f.label "タグ (,で区切ると複数タグ登録できます)" %><br />
+        <%= f.label "タグ (,で区切ると複数タグ登録できます、30字以内)" %><br />
         <%= f.text_field :tag_name, size: "30" %>
       </div>
       <div class="text_field">
          <%= f.label "本文" %><br />
-         <%= f.text_area :text, size: "55x8" %>
+         <%= f.rich_text_area :content, size: "55x8" %>
       </div>
       <div class="post_button">
         <%= f.submit '投稿', class:"button" %>

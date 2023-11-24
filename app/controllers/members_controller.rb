@@ -16,8 +16,11 @@ class MembersController < ApplicationController
 
   def update
     member = Member.find(params[:id])
-    member.update(member_params)
-    redirect_to  member_path(member.id), notice: "プロフィールが更新されました"
+    if member.update(member_params)
+      redirect_to  member_path(member.id), notice: "プロフィールが更新されました"
+    else
+      redirect_to edit_member_path(member.id), alert: "メンバーネームを１文字以上、自己紹介を１６０字以内で入力してください"
+    end
   end
 
   def quit

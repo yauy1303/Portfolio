@@ -16,69 +16,83 @@
     <% end %>
 
     <% @member.each do |member| %>
-      <%= link_to member_path(member.id) do %>
-        <div class="member_list">
-          <% if current_member.admin  %>
-            <div class="row">
+      <div class="member_list">
+        <!--管理者権限-->
+        <% if current_member.admin  %>
+          <div class="row">
+            <%= link_to member_path(member.id) do %>
               <div class="left">
                 <p><%= image_tag member.get_profile_image, :size => "150x150" %></p>
               </div>
-              <div class="right">
+            <% end %>
+            <div class="right">
+              <div class="right_row">
+                <div class="name">
+                  <p><%= member.name %></p>
+                </div>
+                <div class="button_row">
+                  <!--管理者権限-->
+                  <% if current_member.admin %>
+                    <% unless member.admin  == true %>
+                      <div class="out_button">
+                        <!--退会ユーザーとアクティブユーザーの分岐-->
+                        <% if member.is_member == false %>
+                          <p><%= button_to "管理者退会", out_member_path(member), method: :patch, class:"button" %></p>
+                        <% else %>
+                          <p><%= button_to "有効にする", out_member_path(member), method: :patch, class:"button" %></p>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  <% end %>
+                  <!--他ユーザーの場合のみ表示-->
+                  <% unless member.id == current_member.id %>
+                    <!--フォローボタン-->
+                    <div id="ajax_follow_<%= member.id %>">
+                      <%= render "relationships/follow_button", member: member %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="introduction">
+                <p><%= member.introduction %></p>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <!--退会ユーザーの非表示-->
+          <% unless member.is_member == true %>
+            <div class="row">
+          　   <%= link_to member_path(member.id) do %>
+                <div class="left">
+                  <p><%= image_tag member.get_profile_image, :size => "150x150" %></p>
+             　  </div>
+           　  <% end %>
+            　<div class="right">
                 <div class="right_row">
                   <div class="name">
                     <p><%= member.name %></p>
                   </div>
                   <div class="button_row">
-                    <% if current_member.admin %>
-                      <% unless member.admin  == true %>
-                        <div class="out_button">
-                          <% if member.is_member == false %>
-                            <p><%= button_to "管理者退会", out_member_path(member), method: :patch, class:"button" %></p>
-                          <% else %>
-                            <p><%= button_to "有効にする", out_member_path(member), method: :patch, class:"button" %></p>
-                          <% end %>
-                        </div>
-                      <% end %>
-                    <% end %>
-                     <!--フォローボタン-->
-                     <% unless member.id == current_member.id %>
+                    <!--他ユーザーのみ表示-->
+                   <% unless member.id == current_member.id %>
+                      <!--フォローボタン-->
+                     <div id="ajax_follow_<%= member.id %>">
                        <%= render "relationships/follow_button", member: member %>
-                     <% end %>
+                     </div>
+                   <% end %>
                   </div>
-                </div>
-                <div class="introduction">
-                  <p><%= member.introduction %></p>
-                </div>
-              </div>
-            </div>
-          <% else %>
-            <% unless member.is_member == true %>
-            　<div class="row">
-                <div class="left">
-                  <p><%= image_tag member.get_profile_image, :size => "150x150" %></p>
-             　  </div>
-              　<div class="right">
-                  <div class="right_row">
-                    <div class="name">
-                      <p><%= member.name %></p>
-                    </div>
-                    <div class="button_row">
-                     <!--フォローボタン-->
-                     <% unless member.id == current_member.id %>
-                       <%= render "relationships/follow_button", member: member %>
-                     <% end %>
-                    </div>
-                   </div>
-                   <div class="introduction">
-                     <p><%= member.introduction %></p>
-                   </div>
                  </div>
-            　 </div>
-            <% end %>
+                 <div class="introduction">
+                   <p><%= member.introduction %></p>
+                 </div>
+               </div>
+          　 </div>
           <% end %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     <% end %>
 
   </div>
 </div>
+
+

@@ -31,7 +31,7 @@
   position: fixed;
   top: 0;
   z-index: 9999;
-
+  font-family: 'Mochiy Pop One', sans-serif;
 }
 
 .logo {
@@ -42,6 +42,12 @@
 
 .logo p {
   margin: 0;
+}
+
+.user_name p{
+  margin: 0;
+  position: relative;
+  left: 50px;
 }
 
 .nav {
@@ -76,19 +82,32 @@
 }
 
 
+// 通知
+.notice p{
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto 20px;
+}
+
+.alert p{
+  font-size: 18px;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto 20px;
+}
+
+
 /*body*/
 body {
   margin: 220px 0 120px 0;
   padding: 0;
   line-height: 1.7;
   /*font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
-  /*background-color: #e6e6e6;*/
-
-  /*デプロイ用*/
+  font-family: 'Sawarabi Gothic', sans-serif;
   background-image: image-url("back_image.jpg");
-
-  /*開発用*/
-  /*background-image: url("back_image.jpg");*/
 }
 
 body p,label {
@@ -206,6 +225,13 @@ body p,label {
   text-align: center;
 }
 
+.top .ranking_index .title h2 {
+  background:rgba(255,255,143,0.8);
+  margin: 0 auto 30px;
+  display: inline-block;
+  padding: 0 20px;
+}
+
 .top .ranking_index .flex_outer .card{
   position: relative;
 }
@@ -264,7 +290,6 @@ body p,label {
   margin-right: 3px;
 }
 
-
 .top .new_index {
   margin: 0 3%;
   margin-bottom: 50px;
@@ -272,6 +297,13 @@ body p,label {
 
 .top .new_index .title {
   text-align: center;
+}
+
+.top .new_index .title h2 {
+  background:rgba(255,255,143,0.8);
+  display: inline-block;
+  margin: 0 auto 30px;
+  padding: 0 20px;
 }
 
 .top .new_index .flex_outer {
@@ -345,10 +377,24 @@ body p,label {
   color: #333;
   font-weight: bold;
   text-decoration: underline;
+  background:rgba(255,255,143,0.8);
+  padding: 5px;
 }
 
 .top .new_index .link a:hover {
   color: #0067C0;
+}
+
+.top .tag_index {
+  background: #B2FF7A;
+  padding: 20px;
+  width: 90%;
+  margin:0 auto;
+}
+
+.top .tag_index .title h2{
+  margin: 0 0 10px 0;
+  text-align: center;
 }
 
 
@@ -358,6 +404,10 @@ body p,label {
   padding: 50px 0;
 }
 
+.about p {
+  font-size: 18px;
+}
+
 .about .about_title {
   text-align: center;
   margin-bottom: 3%;
@@ -365,6 +415,7 @@ body p,label {
 
 .about .about_title h1 {
   margin: 0;
+  line-height: 1;
 }
 
 .about .row {
@@ -381,7 +432,6 @@ body p,label {
 
 /*メンバープロフィール*/
 .member_show {
-  /*background-color: #ffffcc;*/
   background:#B2FF7A;
   padding: 50px;
 }
@@ -393,7 +443,6 @@ body p,label {
 .member_show .member_profile {
   display: flex;
   justify-content: center;
-  /*background:#B2FF7A;*/
   padding: 0 20px;
 }
 
@@ -531,6 +580,7 @@ body p,label {
   padding: 20px 100px;
 }
 
+// マウスオーバー時に色が変わる
 .member_index .member_list:hover {
   background-color:#B3B3B3
 }
@@ -750,6 +800,10 @@ body p,label {
  border-top: 1px solid #EDD5D5;
 }
 
+.article_show .comment p {
+ margin: 0 0 20px 0;
+}
+
 .article_show .comment_form {
   text-align: center;
 }
@@ -762,6 +816,14 @@ body p,label {
 
 .articles .article_index .title {
   text-align: center;
+}
+
+.articles .article_index .title h2{
+  text-align: center;
+  background:rgba(255,255,143,0.8);
+  display: inline-block;
+  margin: 0 auto 20px;
+  padding: 0 20px;
 }
 
 .articles a {
@@ -814,6 +876,13 @@ body p,label {
 
 .articles .article_index .flex_outer .card .row span {
   margin-right: 3px;
+}
+
+.articles .pagination {
+ background:rgba(255,255,143,0.8);
+ display: inline-block;
+ padding: 0 20px;
+ margin: 0 auto;
 }
 
 /*フォロー一覧画面*/
@@ -981,6 +1050,13 @@ body p,label {
   text-align: center;
 }
 
+.searches .search_index .title h2 {
+  background:rgba(255,255,143,0.8);
+  display: inline-block;
+  margin: 0 auto 20px;
+  padding: 0 20px;
+}
+
 .searches .search_index .flex_outer {
   display: flex;
   flex-wrap: wrap;
@@ -1029,6 +1105,81 @@ body p,label {
   margin-right: 3px;
 }
 
+
+// タグ検索一覧画面
+.tag_search .serch_result {
+  margin: 0 3%;
+}
+
+.tag_search .serch_result .title {
+  text-align: center;
+}
+
+.tag_search .serch_result .title h2{
+  background:rgba(255,255,143,0.8);
+  display: inline-block;
+  margin: 0 auto 20px;
+  padding: 0 20px;
+}
+
+.tag_search a {
+  text-decoration: none;
+}
+
+.tag_search .serch_result .flex_outer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tag_search .serch_result .flex_outer .card {
+  background: #ffffcc;
+  width: 255px;
+  margin: 5px;
+  padding: 3px;
+}
+
+.tag_search .serch_result .flex_outer .card .caption {
+  margin-left: 10px;
+}
+
+.tag_search .serch_result .flex_outer .card a{
+  text-decoration: none;
+}
+
+.tag_search .serch_result .flex_outer .card p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.tag_search .serch_result .flex_outer .card .image {
+  text-align: center;
+}
+
+.tag_search .serch_result .flex_outer .card .title {
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.tag_search .serch_result .flex_outer .card .row {
+  display: flex;
+}
+
+.tag_search .serch_result .flex_outer .card .row p:first-child {
+  margin-right: 10px;
+}
+
+.tag_search .serch_result .flex_outer .card .row span {
+  margin-right: 3px;
+}
+
+.tag_search .pagination {
+ background:rgba(255,255,143,0.8);
+ display: inline-block;
+ padding: 0 20px;
+ margin: 0 auto;
+}
 
 /*フッター*/
 .footer {

@@ -9,9 +9,10 @@ class ApplicationController < ActionController::Base
      @articles = @q.result
   end
 
-    def after_sign_in_path_for(resource)
-      member_path(@member.id)
-    end
+  # ログイン後にマイページへ遷移
+  def after_sign_in_path_for(resource)
+    member_path(@member.id)
+  end
 
   protected
 

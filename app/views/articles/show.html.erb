@@ -7,7 +7,11 @@
         <p><%= @article.created_at.strftime('%Y/%m/%d') %>&nbsp;投稿</p>
          <div class="tags">
             <% @tag.each do |tag| %>
-              <label><i class="fa-solid fa-tag"></i><%= tag.tag_name %>&nbsp;</label>
+               <label>
+                  <i class="fa-solid fa-tag"></i>
+                  <%= link_to tag.tag_name,  search_tag_article_path(tag.id) %>
+                  <%="(#{tag.articles.count})" %>
+              </label>
             <% end %>
         </div>
       </div>
@@ -24,9 +28,13 @@
           </div>
           <div class="article_button">
             <div class="row">
+              <!--ログインユーザー以外の表示-->
               <% if @member.id != current_member.id %>
             　   <!--フォローボタン-->
-                <%= render "relationships/follow_button", member: @member %>
+                <div id="ajax_follow_<%= @article.member.id %>">
+                  <%= render "relationships/follow_button", member: @member %>
+                </div>
+              <!--ログインユーザーの表示  -->
               <% elsif %>
                 <div class="edit_button">
                   <%= button_to "記事を編集する", edit_article_path, method: :get, class:"button" %>
@@ -45,77 +53,35 @@
           <p><%= image_tag @article.get_article_image, :size => "600x600" %></p>
         </div>
         <div class="text">
-          <P><%= @article.text %></P>
+          <P><%= @article.content %></P>
         </div>
       </div>
 
-      <div class="favorite_button">
-        <% if @article.favorited_by?(current_member) %>
-          <div class="row">
-            <%= link_to article_favorites_path(@article), method: :delete do %>
-              <p><%= image_tag "favorite.png", :size => "60x60" %> </p>
-            <% end %>
-            <p><%= @article.favorites.count %></p>
+      <!--いいねボタン-->
+      <div id="ajax_favorite">
+        <%= render "favorites/btn", article: @article %>
+      </div>
+
+      <!--コメント欄-->
+      <div class="comment_index">
+        <% if @article.comments.exists? %>
+          <h4>コメント</h4>
+          <div id="ajax_comment_index">
+            <%= render "comments/comment_index",article: @article, comment: @comment %>
           </div>
         <% else %>
-          <div class="row">
-            <%= link_to article_favorites_path(@article), method: :post do %>
-              <p><%= image_tag "favorite.png", :size => "60x60" %> </p>
-            <% end %>
-            <p><%= @article.favorites.count %></p>
+          <div class="no_comment">
+            <h4>コメントがありません</h4>
           </div>
         <% end %>
       </div>
 
-      <div class="comment_index">
-        <h4>コメント</h4>
-        <% @article.comments.each do |comment| %>
-          <div class="row">
-            <div class="image">
-              <%= link_to member_path(comment.member) do %>
-                <p><%= image_tag comment.member.get_profile_image, :size => "100x100" %></p>
-              <% end %>
-            </div>
-            <div class="column">
-              <div class="name">
-                <p><%= comment.member.name %></p>
-              </div>
-              <div class="day">
-                <p><%= comment.created_at.strftime('%Y/%m/%d') %></p>
-              </div>
-            </div>
-            <div class="comment_button">
-              <div class="row">
-                <% if comment.member.id != current_member.id %>
-                  <!--フォローボタン-->
-                  <%= render "relationships/follow_button", member: @member %>
-                <% end %>
-                <% if comment.member.id == current_member.id %>
-                  <div class="comment_destroy_button">
-                    <%= button_to "コメント削除", article_comment_path(comment.article, comment), method: :delete, class: "button" %>
-                  </div>
-                <% elsif current_member.admin? %>
-                  <div class="admin_comment_destroy_button">
-                    <%= button_to "管理者用削除", article_comment_path(comment.article, comment), method: :delete, class: "button" %>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          </div>
-
-          <div class="comment">
-            <p><%= comment.article_comment %></p>
-          </div>
-
-        <% end %>
-      </div>
-
+      <!--コメントフォーム-->
       <div class="comment_form">
         <h4>コメント入力</h4>
-        <%= form_with model: [@article, @comment] do |f| %>
-          <%= f.text_area :article_comment, rows: "5", cols: "70", placeholder: "コメントをここに" %>
-          <p><%= f.submit "送信する", class: "button" %></p>
-        <% end %>
+        <div id="ajax_comment_form">
+           <%= render "comments/comment_form", article: @article, comment: @comment %>
+        </div>
       </div>
 
     </div>
