@@ -16,6 +16,9 @@ class Article < ApplicationRecord
 
   # バリデーション
   validates :title, presence: true, length: { in: 1..40 }
+  
+  # action textの使用
+  has_rich_text :content
 
   # 画像投稿用（アクティブストレージ）
   has_one_attached :article_image
