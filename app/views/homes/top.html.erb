@@ -2,9 +2,12 @@
   <div class="top">
 
     <div class="ranking_index">
+
       <div class="title">
         <h2>人気記事</h2>
       </div>
+
+      <!--記事カード-->
       <div class="flex_outer">
         <% @article_like_ranks.each.with_index(1) do |article, i| %>
           <%= link_to article_path(article.id) do %>
@@ -24,7 +27,7 @@
                 </div>
               <% end %>
               <div class="caption">
-                <p class="title"><%= article.title %></p>
+                <p class="title"><%= article.title.truncate(17, omission: '..') %></p>
                 <p>投稿者:<%= article.member.name %></p>
                 <p>日時:<%= article.created_at.strftime('%Y/%m/%d') %></p>
                 <div class="row">
@@ -44,16 +47,19 @@
     </div>
 
     <div class="new_index">
+
       <div class="title">
         <h2>新着記事</h2>
       </div>
+
+      <!--記事カード-->
       <div class="flex_outer">
         <% @new_article.each do |article| %>
            <%= link_to article_path(article.id) do %>
             <div class="card">
               <p class="image"><%= image_tag article.get_article_image, :size => "250x250" %></p>
               <div class="caption">
-                <p class="title"><%= article.title %></p>
+                <p class="title"><%= article.title.truncate(17, omission: '..') %></p>
                 <p>投稿者:<%= article.member.name %></p>
                 <p>日時:<%= article.created_at.strftime('%Y/%m/%d') %></p>
                 <div class="row">
@@ -70,16 +76,20 @@
           <% end %>
         <% end %>
       </div>
+
       <div class="link">
         <p><%= link_to  "すべての投稿へ", articles_path %></p>
       </div>
     </div>
 
     <div class="tag_index">
+
       <div class="title">
-        <h2>タグ検索</h2>
+        <h2>タグで検索</h2>
       </div>
+
       <% @tag_list.each do |tag_list| %>
+        <!--記事についているタグが「０」の場合は非表示-->
         <% if tag_list.articles.count > 0 %>
           <label>
             <i class="fa-solid fa-tag"></i>
@@ -88,9 +98,11 @@
             </label>
         <% end %>
       <% end %>
+
       <div class="paginate">
         <%= paginate @tag_list %>
       </div>
+
     </div>
 
 

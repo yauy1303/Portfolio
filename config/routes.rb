@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       get "search"
     end
     member do
+      # タグ検索
       get "search_tag" => "articles#search_tag"
     end
   end

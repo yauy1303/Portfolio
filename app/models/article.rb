@@ -16,7 +16,7 @@ class Article < ApplicationRecord
 
   # バリデーション
   validates :title, presence: true, length: { in: 1..40 }
-  
+
   # action textの使用
   has_rich_text :content
 

@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
 
     if comment.save
     else
+      # エラーの場合は非同期OFF
       redirect_to request.referer, alert:"メッセージを200字以内で入力してください"
     end
 
