@@ -15,11 +15,11 @@
     <!--google font - MochiyPopOne-->
     <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
 
-
     <!--fontawesome-->
     <script src="https://kit.fontawesome.com/e9e6566511.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <!--ヘッダー-->
@@ -35,5 +35,15 @@
 
   <!--フッター-->
   <%= render 'layouts/footer' %>
+
+  <!--ハンバーガーメニューJS-->
+  <script>
+    $(function () {
+      $('#js-hamburger-menu, .navigation__link').on('click', function () {
+        $('.navigation').slideToggle(500)
+        $('.hamburger-menu').toggleClass('hamburger-menu--open')
+      });
+    });
+  </script>
 
 </html>

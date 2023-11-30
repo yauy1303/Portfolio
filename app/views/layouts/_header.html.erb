@@ -26,21 +26,37 @@
       </div>
     </div>
 
-    <ul>
-      <li><%= link_to "サイトについて", about_path %></li>
-      <!--ログイン前-->
-      <% unless member_signed_in? %>
-        <li><%= link_to 'ゲストログイン', members_guest_sign_in_path, method: :post %></li>
-        <li><%= link_to "ログイン", new_member_session_path %></li>
-        <li><%= link_to "新規登録", new_member_registration_path %></li>
-      <!--ログイン後-->
-      <% else %>
-        <li><%= link_to "メンバー", members_path %></li>
-        <li><%= link_to "投稿一覧", articles_path %></li>
-        <li><%= link_to "マイページ", member_path(current_member.id) %></li>
-        <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></li>
-        <li><%= button_to "投稿する", new_article_path,  method: :get, class:"button" %></li>
-      <% end %>
-    </ul>
+    <!--ハンバーガーメニュー-->
+    <button class="hamburger-menu" id="js-hamburger-menu">
+      <span class="hamburger-menu__bar"></span>
+      <span class="hamburger-menu__bar"></span>
+      <span class="hamburger-menu__bar"></span>
+    </button>
+
+    <div class="navigation">
+      <ul class="navigation__list">
+        <li class="navigation__list-item"><%= link_to "サイトについて", about_path, class:"navigation__link" %></li>
+        <!--ログイン前-->
+        <% unless member_signed_in? %>
+          <li class="navigation__list-item"><%= link_to 'ゲストログイン', members_guest_sign_in_path, method: :post, class:"navigation__link" %></li>
+          <li class="navigation__list-item"><%= link_to "ログイン", new_member_session_path, class:"navigation__link" %></li>
+          <li class="navigation__list-item"><%= link_to "新規登録", new_member_registration_path, class:"navigation__link" %></li>
+        <!--ログイン後-->
+        <% else %>
+          <li class="navigation__list-item"><%= link_to "メンバー", members_path, class:"navigation__link" %></li>
+          <li class="navigation__list-item"><%= link_to "投稿一覧", articles_path, class:"navigation__link" %></li>
+          <li class="navigation__list-item"><%= link_to "マイページ", member_path(current_member.id), class:"navigation__link" %></li>
+          <li class="navigation__list-item"><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class:"navigation__link" %></li>
+          <!--PC表示-->
+          <li class="pc_button"><%= button_to "投稿する", new_article_path,  method: :get, class:"button" %></li>
+          <!--レスポンシブ表示-->
+          <li class="responsive_link"><%= link_to "投稿する", new_article_path,  method: :get, class:"navigation__link" %></li>
+        <% end %>
+      </ul>
+    </div>
+
   </nav>
+
 </header>
+
+<!--ハンバーガーメニューJS-->
