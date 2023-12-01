@@ -1256,10 +1256,6 @@ body p,label {
     visibility: visible;
   }
 
-  .search_form {
-    display: none;
-  }
-
   .pc_button {
     display: none;
   }
@@ -1353,5 +1349,60 @@ body p,label {
       background: #fff;
     }
   }
+
+  // ボディ
+  body {
+  margin: 120px 0 70px 0;
+  }
+
+  // ログイン画面
+  .login {
+    width: 80%;
+    padding: 20px;
+  }
+
+
+  // 新規登録画面
+  .signup {
+    width: 80%;
+    padding: 20px;
+  }
+
+
+  /*サイトについて*/
+  .about {
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+
+  }
+
+  .about p {
+    font-size: 13px;
+  }
+
+  .about .about_title h1 {
+    font-size: 20px;
+  }
+
+  .about .row {
+    display: block;
+    justify-content:center;
+    // flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  .about .about_image {
+    text-align: center;
+  }
+
+  .about .about_image img {
+    width: 200px;
+    height: 150px;
+  }
+
+
+
+
 
 }
