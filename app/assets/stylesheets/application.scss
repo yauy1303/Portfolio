@@ -1401,8 +1401,42 @@ body p,label {
     height: 150px;
   }
 
+  /*メンバープロフィール*/
+  .member_show {
+    background:#B2FF7A;
+    padding: 0;
+  }
 
+  .member_show a {
+    text-decoration: none;
+  }
 
+  .member_show .member_profile {
+    display: block;
+    text-align: center;
+    padding: 0;
+  }
+
+  .member_profile .left {
+    margin-right: 0;
+  }
+
+  .member_profile .left .image p img {
+    border-radius: 50%;
+    margin-top: 20px;
+  }
+
+  .member_profile .right {
+    margin :5px 0;
+  }
+
+  .member_profile .right .name {
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 25px;
+  }
+
+  
 
 
 }
