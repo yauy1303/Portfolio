@@ -1213,6 +1213,16 @@ body p,label {
   margin: 0 auto;
   }
 
+  /*ボタン共通*/
+  .button {
+    border:double 2px #c0c0c0;
+    border-radius: 0;
+    background: #fff;
+    max-width: 80px;
+    padding: 3px 15px;
+    font-size: 10px;
+  }
+
   // TOPページ
  .header {
     padding: 10px;
@@ -1436,7 +1446,55 @@ body p,label {
     font-size: 25px;
   }
 
-  
+  /*メンバー一覧*/
+  .member_index {
+    background-color: #ffffcc;
+  }
+
+  .member_index a {
+    text-decoration: none;
+  }
+
+  .member_index .title h2{
+    padding-top: 50px;
+    text-align: center;
+  }
+
+  .member_index .member_list {
+    background-color: #ffffcc;
+    padding: 15px 0;
+    width: 100%;
+  }
+
+  // マウスオーバー時に色が変わる
+  .member_index .member_list:hover {
+    background-color:#B3B3B3
+  }
+
+  .member_index .member_list .row {
+    display: flex;
+    align-items: center;
+  }
+
+   .member_index .member_list .row a{
+    width: 80px;
+    height: 80px;
+  }
+
+  .member_index .member_list .row .left {
+    margin-right: 10px;
+  }
+
+  .member_index .member_list .row .left p{
+    margin: 0;
+  }
+
+  .member_index .member_list .row .left img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+  }
+
 
 
 }
