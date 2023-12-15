@@ -1411,6 +1411,7 @@ body p,label {
     height: 150px;
   }
 
+
   /*メンバープロフィール*/
   .member_show {
     background:#B2FF7A;
@@ -1445,6 +1446,7 @@ body p,label {
     font-weight: bold;
     font-size: 25px;
   }
+
 
   /*メンバー一覧*/
   .member_index {
@@ -1495,6 +1497,25 @@ body p,label {
     height: 80px;
   }
 
+
+  /*プロフィール編集*/
+  .profile_edit {
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  .profile_edit h2 {
+     margin: 0 0 15px 0;
+  }
+
+  .profile_edit .introduction_filed textarea {
+    width: 100%;
+  }
+
+  .profile_edit .image_filed {
+    margin-bottom: 30px;
+  }
 
 
 }
