@@ -44,7 +44,7 @@ https://app.diagrams.net/?src=about#G1LUo_Jmuet5bJxEzKpC8NtOVXliw_RIGH
 ## 使用技術
 * HTML5 / CSS3
 * Sass
-* JavaScript(jQuery)
+* JavaScript (jQuery)
 * Ruby 3.1.2
 * Ruby on Rails 6.1.7
 * Nginx
