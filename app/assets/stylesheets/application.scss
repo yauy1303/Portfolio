@@ -1518,4 +1518,24 @@ body p,label {
   }
 
 
+  /*新規投稿画面*/
+  .article_new {
+    width: 110%;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  .article_new h2 {
+    margin: 0 0 15px 0;
+  }
+
+  .article_new .title_field,.image_filed,.tag_field {
+    margin-bottom: 15px;
+  }
+
+  .article_new .text_field {
+    width: 100%;
+  }
+
+
 }
