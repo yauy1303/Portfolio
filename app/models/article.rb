@@ -33,19 +33,16 @@ class Article < ApplicationRecord
   end
 
   # タグ機能管理
-  def save_tag(sent_tags)
+  def save_tag(tag_list)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
-    old_tags = current_tags - sent_tags
-    new_tags = sent_tags - current_tags
+    old_tags = current_tags - tag_list
+    new_tags = tag_list - current_tags
 
-    old_tags.each do |old|
-      self.tags.delete Tag.find_by(tag_name: old)
-    end
-
-    # new_tags.each do |new|
-    #   new_post_tag = Tag.find_or_create_by(tag_name: new)
-    #   self.tags << new_post_tag
+    # リファクタリング
+    # old_tags.each do |old|
+    #   self.tags.delete Tag.find_by(tag_name: old)
     # end
+    self.tags.where(tag_name: old_tags).destroy_all
 
     new_tags.each do |new|
       truncated_tag = new[0, 30] # タグを30文字以内に制限する
@@ -57,19 +54,22 @@ class Article < ApplicationRecord
 
   # Updateの時、タグの数を減らした際の記述
   def update_tag(tag_list)
-    tag_relationships.map(&:destroy)
-    return unless tag_list
+    current_tags = self.tags.pluck(:tag_name)
+    old_tags = current_tags - tag_list
+    new_tags = tag_list - current_tags
 
-    # tag_list.each do |tag|
-    #   tag = Tag.find_or_create_by(tag_name: tag)
-    #   TagRelationship.create!(tag: tag, article: self)
+    # リファクタリング
+    # old_tags.each do |old|
+    #   self.tags.delete Tag.find_by(tag_name: old)
     # end
+    self.tags.where(tag_name: old_tags).destroy_all
 
-    tag_list.each do |tag|
-      truncated_tag = tag[0, 30] # タグを30文字以内に制限する
-      tag = Tag.find_or_create_by(tag_name: truncated_tag)
-      TagRelationship.create!(tag: tag, article: self)
+    new_tags.each do |new|
+      truncated_tag = new[0, 30] # タグを30文字以内に制限する
+      new_post_tag = Tag.find_or_create_by(tag_name: truncated_tag)
+      self.tags << new_post_tag
     end
+
   end
 
   # いいねしているかの判断

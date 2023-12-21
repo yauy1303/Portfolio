@@ -14,7 +14,7 @@
       </div>
       <div class="tag_field">
         <%= f.label "タグ (,で区切ると複数タグ登録できます、30字以内)" %><br />
-        <%= f.text_field :tag_name, size: "30" %>
+        <%= f.text_field :tag_name, size: "30", value: @tag_list %>
       </div>
       <div class="text_field">
          <%= f.label "本文" %><br />

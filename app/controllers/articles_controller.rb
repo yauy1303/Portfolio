@@ -51,7 +51,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     tag_list = params[:article][:tag_name].split(",")
     if @article.update(article_params)
-       @article.save_tag(tag_list)
+       @article.update_tag(tag_list)
        redirect_to article_path(@article.id), notice:"編集しました"
     else
        redirect_to edit_article_path(@article.id), alert:"タイトルを40字以内で入力してください"
