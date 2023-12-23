@@ -21,6 +21,11 @@ class MembersController < ApplicationController
 
   def update
     member = Member.find(params[:id])
+
+    unless member.id == current_member.id
+      redirect_to member_path(member.id)
+    end
+
     if member.update(member_params)
       redirect_to  member_path(member.id), notice: "プロフィールが更新されました"
     else

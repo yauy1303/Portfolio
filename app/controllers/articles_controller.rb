@@ -38,7 +38,7 @@ class ArticlesController < ApplicationController
       @article.save_tag(tag_list)
       redirect_to article_path(@article.id), notice:"投稿しました"
     else
-      redirect_to new_article_path, notice:"タイトルを40字以内で入力してください"
+      render :new
     end
   end
 
@@ -54,7 +54,7 @@ class ArticlesController < ApplicationController
        @article.update_tag(tag_list)
        redirect_to article_path(@article.id), notice:"編集しました"
     else
-       redirect_to edit_article_path(@article.id), alert:"タイトルを40字以内で入力してください"
+      render :new
     end
   end
 

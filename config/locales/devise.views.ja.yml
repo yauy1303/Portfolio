@@ -8,6 +8,8 @@ ja:
         name: "メンバーネーム"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
+      article:
+        title: "タイトル"
     models:
       member: "メンバー"
   devise:
