@@ -45,6 +45,12 @@ class ArticlesController < ApplicationController
   def edit
     @article = Article.find(params[:id])
     @tag_list = @article.tags.pluck(:tag_name).join(",")
+
+    # アクセス制限
+    member = Member.find(params[:id])
+    unless member.id == current_member.id
+      redirect_to articles_path
+    end
   end
 
   def update
@@ -55,6 +61,11 @@ class ArticlesController < ApplicationController
        redirect_to article_path(@article.id), notice:"編集しました"
     else
       render :new
+    end
+    # アクセス制限
+    member = Member.find(params[:id])
+    unless member.id == current_member.id
+      redirect_to articles_path
     end
   end
 
