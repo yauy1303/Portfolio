@@ -912,6 +912,7 @@ body p,label {
  margin: 0 auto;
 }
 
+
 /*フォロー一覧画面*/
 .followings_index {
   background: #ffffcc;
@@ -1223,8 +1224,8 @@ body p,label {
 
   // ラッパー
   .wrapper {
-  width: 100%;
-  margin: 0 auto;
+    width: 100%;
+    margin: 0 auto;
   }
 
   /*ボタン共通*/
@@ -1238,7 +1239,7 @@ body p,label {
   }
 
   // TOPページ
- .header {
+  .header {
     padding: 10px;
   }
 
@@ -1384,6 +1385,10 @@ body p,label {
     width: 80%;
     padding: 20px;
   }
+  
+  .login .button {
+    padding: 5px 6px;
+  }
 
 
   // 新規登録画面
@@ -1398,7 +1403,6 @@ body p,label {
     width: 80%;
     margin: 0 auto;
     padding: 10px;
-
   }
 
   .about p {
@@ -1478,7 +1482,7 @@ body p,label {
 
   .member_index .member_list {
     background-color: #ffffcc;
-    padding: 15px 0;
+    padding: 0 15px;
     width: 100%;
   }
 
@@ -1509,6 +1513,10 @@ body p,label {
     border-radius: 50%;
     width: 80px;
     height: 80px;
+  }
+
+  .member_index .member_list .row .right .right_row .name p {
+    padding-right: 10px;
   }
 
 
@@ -1562,66 +1570,15 @@ body p,label {
 
   /*記事詳細画面*/
   .article_show {
-    background-color: #ffffcc;
     padding: 10px;
+  }
+
+  .article_show .button {
+    padding: 5px 6px;
   }
 
   .article_show .inner {
     width: 100%;
-  }
-
-  .article_show .title {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-
-  .article_show .title h2 {
-    margin-bottom: 5px;
-  }
-
-  .article_show .title p{
-    margin: 0;
-  }
-
-  .article_show .article_header {
-    display: flex;
-    margin-bottom: 20px;
-    margin-left: 30px;
-  }
-
-  .article_show .article_header .image {
-    margin:0 30px 0 0;
-  }
-
-  .article_show .article_header img {
-    border-radius: 50%;
-  }
-
-  .article_show .article_header .article_button .row {
-    display: flex;
-  }
-
-  .article_show .article_body .eyecatch p {
-    text-align: center;
-  }
-
-  .article_show .article_body .text p {
-    margin-bottom:50px;
-  }
-
-  .article_show .favorite_button .row {
-    display:flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-bottom: 30px;
-  }
-
-  .article_show .favorite_button .row p:nth-child(1) {
-    margin-right: 10px;
-  }
-
-  .article_show .favorite_button .row p:nth-child(2) {
-    font-size: 20px;
   }
 
   .article_show .comment_index {
@@ -1633,12 +1590,127 @@ body p,label {
     margin-left: 10px;
   }
 
-  .article_show .comment_index .row .comment_button .button {
-    padding: 5px 7px;
-  }
-
   .article_show .comment_form textarea {
     width: 100%;
   }
+
+
+  /*投稿一覧*/
+
+
+  /*フォロー一覧画面*/
+  .followings_index {
+    background-color: #ffffcc;
+  }
+
+  .followings_index a {
+    text-decoration: none;
+  }
+
+  .followings_index .title h2{
+    padding-top: 50px;
+    text-align: center;
+  }
+
+  .followings_index .member_list {
+    background-color: #ffffcc;
+    padding: 0 15px;
+    width: 100%;
+  }
+
+   // マウスオーバー時に色が変わる
+  .followings_index .member_list:hover {
+    background-color:#B3B3B3
+  }
+
+  .followings_index .member_list .row {
+    display: flex;
+    align-items: center;
+  }
+
+   .followings_index .member_list .row a{
+    width: 80px;
+    height: 80px;
+  }
+
+  .followings_index .member_list .row .left {
+    margin-right: 10px;
+  }
+
+  .followings_index .member_list .row .left p{
+    margin: 0;
+  }
+
+  .followings_index .member_list .row .left img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+  }
+
+   .followings_index .member_list .row .right .right_row .name p {
+    padding-right: 10px;
+  }
+
+
+  /*フォロワー一覧画面*/
+  .followeds_index {
+    background-color: #ffffcc;
+  }
+
+  .followeds_index a {
+    text-decoration: none;
+  }
+
+  .followeds_index .title h2{
+    padding-top: 50px;
+    text-align: center;
+  }
+
+  .followeds_index .member_list {
+    background-color: #ffffcc;
+    padding: 0 15px;
+    width: 100%;
+  }
+
+   // マウスオーバー時に色が変わる
+  .followeds_index .member_list:hover {
+    background-color:#B3B3B3
+  }
+
+  .followeds_index .member_list .row {
+    display: flex;
+    align-items: center;
+  }
+
+   .followeds_index .member_list .row a{
+    width: 80px;
+    height: 80px;
+  }
+
+  .followeds_index .member_list .row .left {
+    margin-right: 10px;
+  }
+
+  .followeds_index .member_list .row .left p{
+    margin: 0;
+  }
+
+  .followeds_index .member_list .row .left img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+  }
+
+  .followeds_index .member_list .row .right .right_row .name p {
+    padding-right: 10px;
+  }
+
+
+  /*検索結果一覧画面*/
+
+
+  // タグ検索一覧画面
+
+
 
 }

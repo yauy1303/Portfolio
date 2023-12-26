@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
 
   def search
     @q = Article.ransack(params[:q])
-    @articles = @q.result(distinct: true)
+    @articles = @q.result(distinct: true).page(params[:page]).per(3)
     @result = params[:q]&.values&.reject(&:blank?)
     @search_word = @q.title_cont
   end
@@ -47,8 +47,7 @@ class ArticlesController < ApplicationController
     @tag_list = @article.tags.pluck(:tag_name).join(",")
 
     # アクセス制限
-    member = Member.find(params[:id])
-    unless member.id == current_member.id
+    unless @article.member_id == current_member.id
       redirect_to articles_path
     end
   end
@@ -57,14 +56,14 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     tag_list = params[:article][:tag_name].split(",")
     if @article.update(article_params)
-       @article.update_tag(tag_list)
-       redirect_to article_path(@article.id), notice:"編集しました"
+      @article.update_tag(tag_list)
+      redirect_to article_path(@article.id), notice:"編集しました"
     else
       render :new
     end
+
     # アクセス制限
-    member = Member.find(params[:id])
-    unless member.id == current_member.id
+    unless @article.member_id == current_member.id
       redirect_to articles_path
     end
   end
