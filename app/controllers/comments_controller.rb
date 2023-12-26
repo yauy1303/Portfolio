@@ -2,29 +2,23 @@ class CommentsController < ApplicationController
 
   def create
     @article = Article.find(params[:article_id])
-    comment = current_member.comments.new(comment_params)
-    comment.article_id = @article.id
-    # comment.save
-
-    if comment.save
-    else
-      # エラーの場合は非同期OFF
-      redirect_to request.referer, alert:"メッセージを200字以内で入力してください"
+    @comment = current_member.comments.new(comment_params)
+    @comment.article_id = @article.id
+    
+    respond_to do |format|
+      if @comment.save
+        format.js { render :create }
+      else
+        format.js { render :error }
+      end
     end
-
-    # 非同期通信対応
-    # if comment.save
-    #   redirect_to request.referer, notice: "コメントしました"
-    # else
-    #   redirect_to request.referer, alert:"メッセージを入力してください"
-    # end
   end
 
   def destroy
     Comment.find(params[:id]).destroy
     @article = Article.find(params[:article_id])
     # 非同期通信対応
-    # redirect_to request.referer, notice: "コメントを削除しました"
+    redirect_to request.referer, notice: "コメントを削除しました"
   end
 
   private

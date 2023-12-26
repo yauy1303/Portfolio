@@ -63,7 +63,7 @@
   margin: 0;
   display: flex;
   align-items: center;
-  padding-top: 10px;
+  padding-bottom: 10px;
   padding-left: 0;
 }
 
@@ -79,6 +79,19 @@
 .nav ul li a {
   text-decoration: none;
   color: #4b4b4b;
+}
+
+.responsive_link {
+  visibility: hidden;
+}
+
+.hamburger-menu {
+  visibility: hidden;
+}
+
+.search_form {
+  position: relative;
+  top: 25px;
 }
 
 
@@ -99,6 +112,14 @@
   margin: 0 auto 20px;
 }
 
+// エラーメッセージ
+.error_message {
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto 20px;
+}
 
 /*body*/
 body {
@@ -860,6 +881,12 @@ body p,label {
   text-align: center;
 }
 
+.index_img{
+  width: 100%;
+  height: 250px;
+  object-fit: cover; // 縦横比を保って表示
+}
+
 .articles .article_index .flex_outer .card .title {
   font-weight: bold;
   font-size: 13px;
@@ -884,6 +911,7 @@ body p,label {
  padding: 0 20px;
  margin: 0 auto;
 }
+
 
 /*フォロー一覧画面*/
 .followings_index {
@@ -1188,4 +1216,501 @@ body p,label {
   background-color: #E6FFFC;
   position: fixed;
   bottom: 0;
+}
+
+
+// レスポンシブ
+@media screen and (max-width:768px) {
+
+  // ラッパー
+  .wrapper {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /*ボタン共通*/
+  .button {
+    border:double 2px #c0c0c0;
+    border-radius: 0;
+    background: #fff;
+    max-width: 80px;
+    padding: 3px 15px;
+    font-size: 10px;
+  }
+
+  // TOPページ
+  .header {
+    padding: 10px;
+  }
+
+  .logo {
+    font-weight: 700;
+    padding-left: 14px;
+  }
+
+  .logo img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .user_name {
+    display: none;
+  }
+
+  .nav {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .nav ul {
+    display: block;
+    padding: 0;
+  }
+
+  .nav ul li {
+    // margin: 0 0 0 15px;
+    font-size: 12px;
+    padding: 5px 0;
+  }
+  .nav ul li a  {
+    color: #ffffff;
+  }
+
+  .responsive_link {
+    visibility: visible;
+  }
+
+  .pc_button {
+    display: none;
+  }
+
+  // ハンバーガーメニュー
+  .hamburger-menu {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    border: none;
+    background: transparent;
+    appearance: none;
+    padding: 0;
+    cursor: pointer;
+    visibility: visible;;
+  }
+
+  .hamburger-menu__bar {
+    display: inline-block;
+    width: 44%;
+    height: 2px;
+    background: #242424;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: .5s;
+  }
+
+  .hamburger-menu__bar:first-child {
+    top: 16px;
+  }
+
+  .hamburger-menu__bar:nth-child(2) {
+    top: 24px;
+  }
+
+  .hamburger-menu__bar:last-child {
+    top: 32px;
+  }
+
+  .hamburger-menu--open .hamburger-menu__bar {
+    top: 50%;
+  }
+
+  .hamburger-menu--open .hamburger-menu__bar:first-child {
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  }
+
+  .hamburger-menu--open .hamburger-menu__bar:last-child {
+    transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+  }
+
+  .hamburger-menu--open .hamburger-menu__bar:nth-child(2) {
+    display: none;
+  }
+
+  .navigation {
+    display: none;
+    background: #242424;
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    z-index: 9999;
+  }
+
+  .navigation__list {
+    text-align: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .navigation__list-item {
+    border-bottom: solid 1px #474747;
+  }
+
+  .navigation__list-item:first-child {
+    border-top: solid 1px #474747;
+  }
+
+  .navigation__link {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    display: block;
+    padding: 24px 0;
+    transition: .5s;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .navigation__link:hover {
+      background: #fff;
+    }
+  }
+
+  // ボディ
+  body {
+  margin: 120px 0 70px 0;
+  }
+
+  // ログイン画面
+  .login {
+    width: 80%;
+    padding: 20px;
+  }
+  
+  .login .button {
+    padding: 5px 6px;
+  }
+
+
+  // 新規登録画面
+  .signup {
+    width: 80%;
+    padding: 20px;
+  }
+
+
+  /*サイトについて*/
+  .about {
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  .about p {
+    font-size: 13px;
+  }
+
+  .about .about_title h1 {
+    font-size: 20px;
+  }
+
+  .about .row {
+    display: block;
+    justify-content:center;
+    // flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  .about .about_image {
+    text-align: center;
+  }
+
+  .about .about_image img {
+    width: 200px;
+    height: 150px;
+  }
+
+
+  /*メンバープロフィール*/
+  .member_show {
+    background:#B2FF7A;
+    padding: 0;
+  }
+
+  .member_show a {
+    text-decoration: none;
+  }
+
+  .member_show .member_profile {
+    display: block;
+    text-align: center;
+    padding: 0;
+  }
+
+  .member_profile .left {
+    margin-right: 0;
+  }
+
+  .member_profile .left .image p img {
+    border-radius: 50%;
+    margin-top: 20px;
+  }
+
+  .member_profile .right {
+    margin :5px 0;
+  }
+
+  .member_profile .right .name {
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 25px;
+  }
+
+
+  /*メンバー一覧*/
+  .member_index {
+    background-color: #ffffcc;
+  }
+
+  .member_index a {
+    text-decoration: none;
+  }
+
+  .member_index .title h2{
+    padding-top: 50px;
+    text-align: center;
+  }
+
+  .member_index .member_list {
+    background-color: #ffffcc;
+    padding: 0 15px;
+    width: 100%;
+  }
+
+  // マウスオーバー時に色が変わる
+  .member_index .member_list:hover {
+    background-color:#B3B3B3
+  }
+
+  .member_index .member_list .row {
+    display: flex;
+    align-items: center;
+  }
+
+   .member_index .member_list .row a{
+    width: 80px;
+    height: 80px;
+  }
+
+  .member_index .member_list .row .left {
+    margin-right: 10px;
+  }
+
+  .member_index .member_list .row .left p{
+    margin: 0;
+  }
+
+  .member_index .member_list .row .left img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+  }
+
+  .member_index .member_list .row .right .right_row .name p {
+    padding-right: 10px;
+  }
+
+
+  /*プロフィール編集*/
+  .profile_edit {
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  .profile_edit h2 {
+     margin: 0 0 15px 0;
+  }
+
+  .profile_edit .introduction_filed textarea {
+    width: 100%;
+  }
+
+  .profile_edit .image_filed {
+    margin-bottom: 30px;
+  }
+
+
+  /*新規投稿画面*/
+  .article_new {
+    width: 110%;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  .article_new h2 {
+    margin: 0 0 15px 0;
+  }
+
+  .article_new .title_field,.image_filed,.tag_field {
+    margin-bottom: 15px;
+  }
+
+  .article_new .text_field {
+    width: 100%;
+  }
+
+
+  /*投稿編集画面*/
+  .article_edit {
+    width: 110%;
+    margin: 0 auto;
+    padding: 15px;
+  }
+
+
+  /*記事詳細画面*/
+  .article_show {
+    padding: 10px;
+  }
+
+  .article_show .button {
+    padding: 5px 6px;
+  }
+
+  .article_show .inner {
+    width: 100%;
+  }
+
+  .article_show .comment_index {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .article_show .comment_index .row .comment_button  {
+    margin-left: 10px;
+  }
+
+  .article_show .comment_form textarea {
+    width: 100%;
+  }
+
+
+  /*投稿一覧*/
+
+
+  /*フォロー一覧画面*/
+  .followings_index {
+    background-color: #ffffcc;
+  }
+
+  .followings_index a {
+    text-decoration: none;
+  }
+
+  .followings_index .title h2{
+    padding-top: 50px;
+    text-align: center;
+  }
+
+  .followings_index .member_list {
+    background-color: #ffffcc;
+    padding: 0 15px;
+    width: 100%;
+  }
+
+   // マウスオーバー時に色が変わる
+  .followings_index .member_list:hover {
+    background-color:#B3B3B3
+  }
+
+  .followings_index .member_list .row {
+    display: flex;
+    align-items: center;
+  }
+
+   .followings_index .member_list .row a{
+    width: 80px;
+    height: 80px;
+  }
+
+  .followings_index .member_list .row .left {
+    margin-right: 10px;
+  }
+
+  .followings_index .member_list .row .left p{
+    margin: 0;
+  }
+
+  .followings_index .member_list .row .left img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+  }
+
+   .followings_index .member_list .row .right .right_row .name p {
+    padding-right: 10px;
+  }
+
+
+  /*フォロワー一覧画面*/
+  .followeds_index {
+    background-color: #ffffcc;
+  }
+
+  .followeds_index a {
+    text-decoration: none;
+  }
+
+  .followeds_index .title h2{
+    padding-top: 50px;
+    text-align: center;
+  }
+
+  .followeds_index .member_list {
+    background-color: #ffffcc;
+    padding: 0 15px;
+    width: 100%;
+  }
+
+   // マウスオーバー時に色が変わる
+  .followeds_index .member_list:hover {
+    background-color:#B3B3B3
+  }
+
+  .followeds_index .member_list .row {
+    display: flex;
+    align-items: center;
+  }
+
+   .followeds_index .member_list .row a{
+    width: 80px;
+    height: 80px;
+  }
+
+  .followeds_index .member_list .row .left {
+    margin-right: 10px;
+  }
+
+  .followeds_index .member_list .row .left p{
+    margin: 0;
+  }
+
+  .followeds_index .member_list .row .left img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+  }
+
+  .followeds_index .member_list .row .right .right_row .name p {
+    padding-right: 10px;
+  }
+
+
+  /*検索結果一覧画面*/
+
+
+  // タグ検索一覧画面
+
+
+
 }

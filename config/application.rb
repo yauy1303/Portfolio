@@ -21,5 +21,8 @@ module WanPal
 
     # 追記　フラッシュメッセージ日本語化
     config.i18n.default_locale = :ja
+
+    # 追記　日本時間設定
+    config.time_zone = 'Tokyo'
   end
 end

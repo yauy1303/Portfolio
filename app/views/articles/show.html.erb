@@ -1,5 +1,6 @@
 <div class="container">
   <div class="article_show">
+
     <div class="inner">
 
       <div class="title">
@@ -50,7 +51,7 @@
 
       <div class="article_body">
         <div class="eyecatch">
-          <p><%= image_tag @article.get_article_image, :size => "600x600" %></p>
+          <p><%= image_tag @article.get_article_image, width:"100%" %></p>
         </div>
         <div class="text">
           <P><%= @article.content %></P>
@@ -74,6 +75,11 @@
             <h4>コメントがありません</h4>
           </div>
         <% end %>
+      </div>
+
+      <!--バリデーションエラーメッセージ-->
+      <div id="comment_error_message">
+        <%= render 'comments/error-message', comment: @comment %>
       </div>
 
       <!--コメントフォーム-->

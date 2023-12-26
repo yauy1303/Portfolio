@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
 
   def search
     @q = Article.ransack(params[:q])
-    @articles = @q.result(distinct: true)
+    @articles = @q.result(distinct: true).page(params[:page]).per(3)
     @result = params[:q]&.values&.reject(&:blank?)
     @search_word = @q.title_cont
   end
@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.page(params[:page])
+    @articles = Article.order(created_at: :desc).page(params[:page])
   end
 
   def show
@@ -38,23 +38,33 @@ class ArticlesController < ApplicationController
       @article.save_tag(tag_list)
       redirect_to article_path(@article.id), notice:"投稿しました"
     else
-      redirect_to new_article_path, notice:"タイトルを40字以内で入力してください"
+      render :new
     end
   end
 
   def edit
     @article = Article.find(params[:id])
     @tag_list = @article.tags.pluck(:tag_name).join(",")
+
+    # アクセス制限
+    unless @article.member_id == current_member.id
+      redirect_to articles_path
+    end
   end
 
   def update
     @article = Article.find(params[:id])
     tag_list = params[:article][:tag_name].split(",")
     if @article.update(article_params)
-       @article.save_tag(tag_list)
-       redirect_to article_path(@article.id), notice:"編集しました"
+      @article.update_tag(tag_list)
+      redirect_to article_path(@article.id), notice:"編集しました"
     else
-       redirect_to edit_article_path(@article.id), alert:"タイトルを40字以内で入力してください"
+      render :new
+    end
+
+    # アクセス制限
+    unless @article.member_id == current_member.id
+      redirect_to articles_path
     end
   end
 

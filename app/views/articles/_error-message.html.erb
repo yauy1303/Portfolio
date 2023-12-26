@@ -1,0 +1,5 @@
+<% if article.errors.any? %>
+  <% article.errors.full_messages.each do |message| %>
+    <p class="error_message"><%= message %></p>
+  <% end %>
+<% end %>

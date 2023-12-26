@@ -9,7 +9,7 @@
         <% @articles.each do |article| %>
           <%= link_to article_path(article.id) do %>
             <div class="card">
-              <p class="image"><%= image_tag article.get_article_image, :size => "250x250",loading: 'lazy' %></p>
+              <p class="image"><%= image_tag article.get_article_image, class: "index_img", loading: 'lazy' %></p>
               <div class="caption">
                 <p class="title"><%= article.title.truncate(17, omission: '..') %></p>
                 <p>投稿者:<%= article.member.name %></p>
