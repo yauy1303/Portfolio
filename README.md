@@ -2,7 +2,7 @@
 
 ## URL http://35.75.128.166/
 
-![readme_top](https://github.com/yauy1303/Portfolio/assets/62428626/65aff3f1-5026-467c-a214-ab3b0dc00fe8)
+![readme_top2](https://github.com/yauy1303/Portfolio/assets/62428626/2c5a72bf-fa12-4787-8c91-d6adb443bd8a)
 
 ## テーマ
 ワンコの飼主のための情報共有アプリ
