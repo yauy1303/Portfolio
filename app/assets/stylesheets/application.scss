@@ -145,6 +145,7 @@ body p,label {
 
 /*ボタン共通*/
 .button {
+  color: #333;
   border:double 2px #c0c0c0;
   border-radius: 0;
   background: #fff;
@@ -154,7 +155,7 @@ body p,label {
 }
 
 .button:hover {
-  color: #000;
+  color: #333;
   background: #FFF450;
 }
 
